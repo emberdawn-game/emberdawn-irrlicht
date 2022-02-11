@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
+  "name": "emberdawn-irrlicht",
+  "version-string": "0.0.0-DEVELOPMENT",
+  "builtin-baseline": "05c445c1fb3afb90aa8a46ca2b7d2a9548a27121",
+  "default-features": ["opengl"],
+  "dependencies": [
+    "libjpeg-turbo",
+    "libpng",
+    "zlib"
+  ],
+  "features": {
+    "opengl": {
+      "description": "OpenGL renderer backend",
+      "dependencies": [
+        "opengl",
+        "opengl-registry"
+      ]
+    }
+  }
+}
