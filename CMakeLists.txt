@@ -12,8 +12,6 @@ project(Irrlicht
 	LANGUAGES CXX
 )
 
-message(STATUS "*** Building IrrlichtMt ${PROJECT_VERSION} ***")
-
 include(GNUInstallDirs)
 
 if(ANDROID)
