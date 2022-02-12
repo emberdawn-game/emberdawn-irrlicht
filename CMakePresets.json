@@ -18,6 +18,18 @@
           "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
         }
       }
+    },
+    {
+      "name": "examples",
+      "displayName": "Include examples",
+      "description": "Extends the default build to include examples",
+      "inherits": "default",
+      "cacheVariables": {
+        "BUILD_EXAMPLES": {
+          "type": "BOOL",
+          "value": true
+        }
+      }
     }
   ],
   "buildPresets": [
