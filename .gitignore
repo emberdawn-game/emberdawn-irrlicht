@@ -4,9 +4,9 @@ CMakeCache.txt
 cmake_install.cmake
 /cmake-build-*/
 install_manifest.txt
-IrrlichtMtConfig.cmake
-IrrlichtMtConfigVersion.cmake
-IrrlichtMtTargets.cmake
+EmberdawnIrrlicht.cmake
+EmberdawnIrrlichtConfigVersion.cmake
+EmberdawnIrrlichtTargets.cmake
 Makefile
 libs/*
 *.so*

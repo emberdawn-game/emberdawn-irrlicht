@@ -274,52 +274,52 @@ add_library(IRRGUIOBJ OBJECT
 
 # Library
 
-add_library(IrrlichtMt)
+add_library(EmberdawnIrrlicht)
 foreach(object_lib
 	IRRMESHOBJ IRROBJ IRRVIDEOOBJ
 	IRRIOOBJ IRROTHEROBJ IRRGUIOBJ)
 	# Set include directories for object library compilation
 	target_include_directories(${object_lib} PRIVATE ${link_includes})
 	# Add objects from object library to main library
-	target_sources(IrrlichtMt PRIVATE $<TARGET_OBJECTS:${object_lib}>)
+	target_sources(EmberdawnIrrlicht PRIVATE $<TARGET_OBJECTS:${object_lib}>)
 endforeach()
 
 # Alias target provides add_submodule compatibility
-add_library(IrrlichtMt::IrrlichtMt ALIAS IrrlichtMt)
+add_library(EmberdawnIrrlicht::EmberdawnIrrlicht ALIAS EmberdawnIrrlicht)
 
-target_include_directories(IrrlichtMt
+target_include_directories(EmberdawnIrrlicht
 	PUBLIC
 		"$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include/>"
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
-		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/irrlichtmt>"
+		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/emberdawn-irrlicht>"
 	PRIVATE
 		${link_includes}
 )
 
-target_link_libraries(IrrlichtMt PRIVATE ${link_libs})
+target_link_libraries(EmberdawnIrrlicht PRIVATE ${link_libs})
 
 # Propagate static library flag to lib users, only needed for Windows
 if(NOT BUILD_SHARED_LIBS)
-	target_compile_definitions(IrrlichtMt INTERFACE _IRR_STATIC_LIB_)
+	target_compile_definitions(EmberdawnIrrlicht INTERFACE _IRR_STATIC_LIB_)
 endif()
 
-set_target_properties(IrrlichtMt PROPERTIES
+set_target_properties(EmberdawnIrrlicht PROPERTIES
 	VERSION ${PROJECT_VERSION}
 	SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
 )
 
 if(WIN32)
-	set_target_properties(IrrlichtMt PROPERTIES PREFIX "") # for DLL name
+	set_target_properties(EmberdawnIrrlicht PROPERTIES PREFIX "") # for DLL name
 endif()
 
 # Installation of library
 if(ANDROID)
-	set(INSTALL_TARGETS IrrlichtMt native_app_glue)
+	set(INSTALL_TARGETS EmberdawnIrrlicht native_app_glue)
 else()
-	set(INSTALL_TARGETS IrrlichtMt)
+	set(INSTALL_TARGETS EmberdawnIrrlicht)
 endif()
 
 install(TARGETS ${INSTALL_TARGETS}
-	EXPORT IrrlichtMt-export
+	EXPORT EmberdawnIrrlicht-export
 	DESTINATION "${CMAKE_INSTALL_LIBDIR}"
 )

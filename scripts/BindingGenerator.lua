@@ -1,6 +1,6 @@
 #!/usr/bin/lua
 -- BindingGenerator.lua (c) hecks 2021
--- This script is a part of IrrlichtMT, released under the same license.
+-- This script is a part of EmberdawnIrrlicht, released under the same license.
 
 -- By default we assume you're running this from /scripts/
 -- and that you have the necessary headers there (gitignored for your convenience)

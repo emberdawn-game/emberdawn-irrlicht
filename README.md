@@ -1,9 +1,9 @@
-IrrlichtMt version 1.9
-======================
+EmberdawnIrrlicht version 1.9
+=============================
 
 The Irrlicht Engine is an open source realtime 3D engine written in C++.
 
-This is a fork by the [Minetest](https://github.com/minetest) developers that contains features, customizations and fixes specifically for use in Minetest.
+This is a fork by the [Emberdawn](https://github.com/emberdawn-game) developers that contains features, customizations and fixes specifically for use in Emberdawn. Based on IrrlichtMt by the [Minetest](https://github.com/minetest) team.
 
 Build
 -----
@@ -17,7 +17,7 @@ The following libraries are required to be installed:
 * on Unix: X11
 
 Aside from standard search options (`ZLIB_INCLUDE_DIR`, `ZLIB_LIBRARY`, ...) the following options are available:
-* `BUILD_SHARED_LIBS` (default: `ON`) - Build IrrlichtMt as a shared library
+* `BUILD_SHARED_LIBS` (default: `ON`) - Build EmberdawnIrrlicht as a shared library
 * `BUILD_EXAMPLES` (default: `OFF`) - Build example applications
 
 e.g. on a Linux system you might want to build for local use like this:
@@ -27,7 +27,7 @@ e.g. on a Linux system you might want to build for local use like this:
 	cmake . -DBUILD_SHARED_LIBS=OFF
 	make -j$(nproc)
 
-This will put an IrrlichtMtTargets.cmake file into the cmake directory in the current build directory, and it can then be imported from another project by pointing `find_package()` to the build directory, or by setting the `CMAKE_PREFIX_PATH` variable to that same path.
+This will put an EmberdawnIrrlichtTargets.cmake file into the cmake directory in the current build directory, and it can then be imported from another project by pointing `find_package()` to the build directory, or by setting the `CMAKE_PREFIX_PATH` variable to that same path.
 
 Platforms
 ---------

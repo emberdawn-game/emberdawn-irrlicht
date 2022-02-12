@@ -5,9 +5,9 @@
 #ifndef __IRR_COMPILE_CONFIG_H_INCLUDED__
 #define __IRR_COMPILE_CONFIG_H_INCLUDED__
 
-//! Identifies the IrrlichtMt fork customized for the Minetest engine
+//! Identifies the EmberdawnIrrlicht fork customized for Emberdawn
 #define IRRLICHT_VERSION_MT_REVISION 4
-#define IRRLICHT_VERSION_MT "mt4"
+#define IRRLICHT_VERSION_EMBERDAWN "emberdawn1"
 
 //! Irrlicht SDK Version
 #define IRRLICHT_VERSION_MAJOR 1
@@ -16,7 +16,7 @@
 // This flag will be defined only in SVN, the official release code will have
 // it undefined
 #define IRRLICHT_VERSION_SVN alpha
-#define IRRLICHT_SDK_VERSION "1.9.0" IRRLICHT_VERSION_MT
+#define IRRLICHT_SDK_VERSION "1.9.0" IRRLICHT_VERSION_EMBERDAWN
 
 #include <stdio.h> // TODO: Although included elsewhere this is required at least for mingw
 
