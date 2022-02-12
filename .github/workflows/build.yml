@@ -13,7 +13,7 @@ jobs:
       - name: Install deps
         run: |
           sudo apt-get update
-          sudo apt-get install g++ cmake libxxf86vm-dev libgl1-mesa-dev libpng-dev libjpeg-dev zlib1g-dev -qyy
+          sudo apt-get install g++ cmake libxxf86vm-dev libgl1-mesa-dev -qyy
 
       - name: Build
         run: |
@@ -32,7 +32,7 @@ jobs:
       - name: Install deps
         run: |
           sudo apt-get update
-          sudo apt-get install g++ cmake libxxf86vm-dev libgles2-mesa-dev libpng-dev libjpeg-dev zlib1g-dev xvfb -qyy
+          sudo apt-get install g++ cmake libxxf86vm-dev libgles2-mesa-dev xvfb -qyy
 
       - name: Build
         run: |
