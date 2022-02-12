@@ -1,10 +1,5 @@
 
-set(IRREXAMPLES
-	# removed
-)
-if(UNIX)
-	list(APPEND IRREXAMPLES AutomatedTest)
-endif()
+set(IRREXAMPLES AutomatedTest)
 
 foreach(exname IN ITEMS ${IRREXAMPLES})
 	file(GLOB sources "${CMAKE_CURRENT_SOURCE_DIR}/${exname}/*.cpp")
