@@ -90,7 +90,7 @@ jobs:
       - name: Install deps
         run: |
           brew update
-          brew install cmake libpng jpeg
+          brew install cmake
 
       - name: Build
         run: |
