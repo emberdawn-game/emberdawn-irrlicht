@@ -11,6 +11,7 @@
       "displayName": "Default Configuration",
       "description": "Default build using Ninja generator",
       "generator": "Ninja",
+      "binaryDir": "${sourceDir}/cmake-build-default",
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": {
           "type": "FILEPATH",
