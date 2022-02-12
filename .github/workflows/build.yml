@@ -28,7 +28,7 @@ jobs:
       - name: Build
         uses: lukka/run-cmake@v10.0
         with:
-          configurePreset: default
+          configurePreset: examples
           buildPreset: default
       - name: Test (headless)
         run: |
