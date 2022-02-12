@@ -55,12 +55,10 @@ jobs:
           buildPreset: default
       - name: Test (headless)
         run: |
-          cd bin/Linux
-          ./AutomatedTest null
+          ./cmake-build-default/bin/Linux/AutomatedTest null
       - name: Test (Xvfb)
         run: |
-          cd bin/Linux
-          LIBGL_ALWAYS_SOFTWARE=true xvfb-run ./AutomatedTest
+          LIBGL_ALWAYS_SOFTWARE=true xvfb-run ./cmake-build-default/bin/Linux/AutomatedTest
 
   win32:
     runs-on: ubuntu-20.04
