@@ -6,7 +6,7 @@ on:
 
 jobs:
 
-  linux-gl:
+  linux:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -22,59 +22,20 @@ jobs:
         with:
           vcpkgDirectory: "${{runner.workspace}}/vcpkg"
           vcpkgGitCommitId: "05c445c1fb3afb90aa8a46ca2b7d2a9548a27121"
+      - name: Set build configuration
+        run: |
+          sed '/#define _IRR_COMPILE_WITH_OGLES2_/ s|^//||g' -i include/IrrCompileConfig.h
       - name: Build
         uses: lukka/run-cmake@v10.0
         with:
           configurePreset: default
           buildPreset: default
-
-  linux-gles:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install libxxf86vm-dev libgles2-mesa-dev xvfb -qyy
-      - name: Install CMake
-        uses: lukka/get-cmake@v3.21.2
-      - name: Set up vcpkg
-        uses: lukka/run-vcpkg@v10.1
-        with:
-          vcpkgDirectory: "${{runner.workspace}}/vcpkg"
-          vcpkgGitCommitId: "05c445c1fb3afb90aa8a46ca2b7d2a9548a27121"
-      - name: Set build configuration
-        run: |
-          sed '/#define _IRR_COMPILE_WITH_OGLES2_/ s|^//||g' -i include/IrrCompileConfig.h
-          sed '/#define _IRR_COMPILE_WITH_OPENGL_/ s|^|//|g' -i include/IrrCompileConfig.h
-      - name: Build
-        uses: lukka/run-cmake@v10.0
-        with:
-          configurePreset: examples
-          buildPreset: default
       - name: Test (headless)
         run: |
           ./cmake-build-default/bin/Linux/AutomatedTest null
-      - name: Test (Xvfb)
+      - name: Test (OpenGL)
         run: |
-          LIBGL_ALWAYS_SOFTWARE=true xvfb-run ./cmake-build-default/bin/Linux/AutomatedTest
-
-  win32:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install deps
-        run: |
-          sudo apt-get update
-          sudo apt-get install cmake g++-mingw-w64-i686 -qyy
-
-      - name: Build
-        run: |
-          ./scripts/ci-build-mingw.sh
-        env:
-          CC: i686-w64-mingw32-gcc
-          CXX: i686-w64-mingw32-g++
+          LIBGL_ALWAYS_SOFTWARE=true xvfb-run ./cmake-build-default/bin/Linux/AutomatedTest opengl
 
   win64:
     runs-on: ubuntu-20.04
