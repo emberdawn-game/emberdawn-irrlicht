@@ -46,7 +46,8 @@ endif()
 
 find_package(ZLIB REQUIRED)
 find_package(JPEG REQUIRED)
-find_package(PNG REQUIRED)
+find_package(libpng REQUIRED)
+find_path(OPENGL_REGISTRY_INCLUDE_DIRS "GL/glcorearb.h")
 
 # To configure the features available in this Irrlicht build please edit
 # include/IrrCompileConfig.h and re-run CMake from a clean state
@@ -98,11 +99,10 @@ set(link_includes
 	"${PROJECT_SOURCE_DIR}/include"
 	"${CMAKE_CURRENT_SOURCE_DIR}"
 
-	"${ZLIB_INCLUDE_DIR}"
 	"${JPEG_INCLUDE_DIR}"
-	"${PNG_INCLUDE_DIR}"
 
 	${OPENGL_INCLUDE_DIR}
+	${OPENGL_REGISTRY_INCLUDE_DIRS}
 	${OPENGLES2_INCLUDE_DIR}
 	${EGL_INCLUDE_DIR}
 
@@ -111,9 +111,9 @@ set(link_includes
 )
 
 set(link_libs
-	"${ZLIB_LIBRARY}"
-	"${JPEG_LIBRARY}"
-	"${PNG_LIBRARY}"
+	"ZLIB::ZLIB"
+	"${JPEG_LIBRARIES}"
+	"png"
 
 	${OPENGL_LIBRARIES}
 	${OPENGLES_LIBRARY}
