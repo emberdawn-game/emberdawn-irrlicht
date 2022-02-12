@@ -7,7 +7,7 @@ on:
 jobs:
 
   linux-gl:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: Install deps
@@ -21,7 +21,7 @@ jobs:
           make VERBOSE=1 -j2
 
   linux-gles:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: Install deps
@@ -47,7 +47,7 @@ jobs:
           LIBGL_ALWAYS_SOFTWARE=true xvfb-run ./AutomatedTest
 
   win32:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: Install deps
@@ -63,7 +63,7 @@ jobs:
           CXX: i686-w64-mingw32-g++
 
   win64:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: Install deps
@@ -79,7 +79,7 @@ jobs:
           CXX: x86_64-w64-mingw32-g++
 
   macos:
-    runs-on: macos-10.15
+    runs-on: macos-11
     steps:
       - uses: actions/checkout@v2
       - name: Install deps
