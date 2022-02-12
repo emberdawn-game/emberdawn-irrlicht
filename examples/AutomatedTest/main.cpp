@@ -3,22 +3,32 @@
 
 using namespace irr;
 
-static video::E_DRIVER_TYPE chooseDriver(const char *arg_)
+static video::E_DRIVER_TYPE chooseDriver(const core::string<c8> arg)
 {
-	if (core::stringc(arg_) == "null")
-		return video::EDT_NULL;
-
-	if (IrrlichtDevice::isDriverSupported(video::EDT_OGLES1))
-		return video::EDT_OGLES1;
-	if (IrrlichtDevice::isDriverSupported(video::EDT_OGLES2))
-		return video::EDT_OGLES2;
-	return video::EDT_OPENGL;
+	if (arg == "null") {
+        return video::EDT_NULL;
+    } else if (arg == "ogles1") {
+        return video::EDT_OGLES1;
+    } else if (arg == "ogles2") {
+        return video::EDT_OGLES2;
+    } else if (arg == "opengl") {
+        return video::EDT_OPENGL;
+    } else if (IrrlichtDevice::isDriverSupported(video::EDT_OPENGL)) {
+        return video::EDT_OPENGL;
+    } else if (IrrlichtDevice::isDriverSupported(video::EDT_OGLES2)) {
+        return video::EDT_OGLES2;
+    } else if (IrrlichtDevice::isDriverSupported(video::EDT_OGLES1)) {
+        return video::EDT_OGLES1;
+    } else {
+        // This will fail but at least it will be obvious that it failed.
+        return video::EDT_OPENGL;
+    }
 }
 
 int main(int argc, char *argv[])
 {
 	SIrrlichtCreationParameters p;
-	p.DriverType = chooseDriver(argc > 1 ? argv[1] : "");
+	p.DriverType = chooseDriver(core::stringc(argc > 1 ? argv[1] : ""));
 	p.WindowSize = core::dimension2du(640, 480);
 	p.Vsync = true;
 	p.LoggingLevel = ELL_DEBUG;
