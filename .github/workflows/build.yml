@@ -33,9 +33,9 @@ jobs:
       - name: Test (headless)
         run: |
           ./cmake-build-default/bin/Linux/AutomatedTest null
-      - name: Test (GLES2)
+      - name: Test (OpenGLES2)
         run: |
-          LIBGL_ALWAYS_SOFTWARE=true xvfb-run ./cmake-build-default/bin/Linux/AutomatedTest gles2
+          LIBGL_ALWAYS_SOFTWARE=true xvfb-run ./cmake-build-default/bin/Linux/AutomatedTest ogles2
 
   win64:
     runs-on: ubuntu-20.04
