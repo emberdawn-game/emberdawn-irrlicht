@@ -9,38 +9,46 @@ jobs:
   linux-gl:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - name: Install deps
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install g++ cmake libxxf86vm-dev libgl1-mesa-dev -qyy
-
+          sudo apt-get install libxxf86vm-dev libgl1-mesa-dev -qyy
+      - name: Install CMake
+        uses: lukka/get-cmake@v3.21.2
+      - name: Set up vcpkg
+        uses: lukka/run-vcpkg@v10.1
       - name: Build
-        run: |
-          cmake .
-          make VERBOSE=1 -j2
+        uses: lukka/run-cmake@v10.0
+        with:
+          buildPreset: default
 
   linux-gles:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - name: Install deps
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install g++ cmake libxxf86vm-dev libgles2-mesa-dev xvfb -qyy
-
-      - name: Build
+          sudo apt-get install libxxf86vm-dev libgles2-mesa-dev xvfb -qyy
+      - name: Install CMake
+        uses: lukka/get-cmake@v3.21.2
+      - name: Set up vcpkg
+        uses: lukka/run-vcpkg@v10.1
+      - name: Set build configuration
         run: |
           sed '/#define _IRR_COMPILE_WITH_OGLES2_/ s|^//||g' -i include/IrrCompileConfig.h
           sed '/#define _IRR_COMPILE_WITH_OPENGL_/ s|^|//|g' -i include/IrrCompileConfig.h
-          cmake . -DBUILD_EXAMPLES=1
-          make -j2
-
+      - name: Build
+        uses: lukka/run-cmake@v10.0
+        with:
+          buildPreset: default
       - name: Test (headless)
         run: |
           cd bin/Linux
           ./AutomatedTest null
-
       - name: Test (Xvfb)
         run: |
           cd bin/Linux
