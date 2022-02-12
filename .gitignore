@@ -3,6 +3,7 @@ CMakeFiles
 CMakeCache.txt
 cmake_install.cmake
 /cmake-build-*/
+/CMakeUserPresets.json
 install_manifest.txt
 EmberdawnIrrlicht.cmake
 EmberdawnIrrlichtConfigVersion.cmake
