@@ -37,21 +37,23 @@ jobs:
         run: |
           LIBGL_ALWAYS_SOFTWARE=true xvfb-run ./cmake-build-default/bin/Linux/AutomatedTest ogles2
 
-  win64:
-    runs-on: ubuntu-20.04
+  windows:
+    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install deps
-        run: |
-          sudo apt-get update
-          sudo apt-get install cmake g++-mingw-w64-x86-64 -qyy
-
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install CMake
+        uses: lukka/get-cmake@v3.21.2
+      - name: Set up vcpkg
+        uses: lukka/run-vcpkg@v10.1
+        with:
+          vcpkgDirectory: "${{runner.workspace}}/vcpkg"
+          vcpkgGitCommitId: "05c445c1fb3afb90aa8a46ca2b7d2a9548a27121"
       - name: Build
-        run: |
-          ./scripts/ci-build-mingw.sh
-        env:
-          CC: x86_64-w64-mingw32-gcc
-          CXX: x86_64-w64-mingw32-g++
+        uses: lukka/run-cmake@v10.0
+        with:
+          configurePreset: default
+          buildPreset: default
 
   macos:
     runs-on: macos-11
