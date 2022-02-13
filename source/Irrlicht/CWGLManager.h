@@ -16,7 +16,6 @@
 
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
-#include <libloaderapi.h>
 
 namespace irr
 {
@@ -56,9 +55,6 @@ namespace video
 		//! Change render context, disable old and activate new defined by videoData
 		virtual bool activateContext(const SExposedVideoData& videoData, bool restorePrimaryOnZero) _IRR_OVERRIDE_;
 
-		// Get procedure address.
-		virtual void* getProcAddress(const std::string &procName) _IRR_OVERRIDE_;
-
         // Swap buffers.
         virtual bool swapBuffers() _IRR_OVERRIDE_;
 
@@ -70,8 +66,6 @@ namespace video
 		PIXELFORMATDESCRIPTOR pfd;
 		ECOLOR_FORMAT ColorFormat;
         void* FunctionPointers[1];
-
-		HMODULE libHandle;
 	};
 }
 }

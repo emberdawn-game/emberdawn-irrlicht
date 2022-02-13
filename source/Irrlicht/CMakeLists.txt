@@ -10,8 +10,6 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 	add_definitions(-D_DEBUG)
 endif()
 set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "^(GNU|Clang|AppleClang)$")
 	set(CMAKE_CXX_FLAGS_RELEASE "-O3")
@@ -174,7 +172,6 @@ set(IRRDRVROBJ
 	CGLXManager.cpp
 	CWGLManager.cpp
 	CEGLManager.cpp
-	mt_opengl_loader.cpp
 )
 
 set(IRRIMAGEOBJ

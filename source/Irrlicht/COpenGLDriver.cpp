@@ -18,8 +18,6 @@
 #include "COpenGLCoreTexture.h"
 #include "COpenGLCoreRenderTarget.h"
 
-#include "mt_opengl.h"
-
 #ifdef _IRR_COMPILE_WITH_SDL_DEVICE_
 #include <SDL/SDL.h>
 #endif
@@ -72,8 +70,6 @@ bool COpenGLDriver::initDriver()
 #if defined(_IRR_COMPILE_WITH_WINDOWS_DEVICE_) || defined(_IRR_COMPILE_WITH_X11_DEVICE_)
 	extGlSwapInterval(Params.Vsync ? 1 : 0);
 #endif
-
-	GL.LoadAllProcedures(ContextManager);
 
 	return true;
 }
