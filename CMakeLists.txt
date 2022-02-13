@@ -18,21 +18,6 @@ project(EmberdawnIrrlicht
 
 include(GNUInstallDirs)
 
-if(ANDROID)
-	set(sysname Android)
-elseif(APPLE)
-	set(sysname OSX)
-elseif(MSVC)
-	set(sysname Win32-VisualStudio)
-elseif(WIN32)
-	set(sysname Win32-gcc)
-else()
-	set(sysname Linux)
-endif()
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib/${sysname})
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/${sysname})
-
 if(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type: Debug or Release" FORCE)
 endif()

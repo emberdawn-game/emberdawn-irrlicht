@@ -35,7 +35,7 @@ jobs:
           ./cmake-build-release/bin/Linux/AutomatedTest null
       - name: Test (OpenGLES2)
         run: |
-          LIBGL_ALWAYS_SOFTWARE=true xvfb-run ./cmake-build-release/bin/Linux/AutomatedTest ogles2
+          LIBGL_ALWAYS_SOFTWARE=true xvfb-run ./cmake-build-release/bin/AutomatedTest ogles2
 
   windows:
     runs-on: windows-latest
