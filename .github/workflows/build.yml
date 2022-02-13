@@ -58,13 +58,17 @@ jobs:
   macos:
     runs-on: macos-11
     steps:
-      - uses: actions/checkout@v2
-      - name: Install deps
-        run: |
-          brew update
-          brew install cmake
-
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install CMake
+        uses: lukka/get-cmake@v3.21.2
+      - name: Set up vcpkg
+        uses: lukka/run-vcpkg@v10.1
+        with:
+          vcpkgDirectory: "${{runner.workspace}}/vcpkg"
+          vcpkgGitCommitId: "05c445c1fb3afb90aa8a46ca2b7d2a9548a27121"
       - name: Build
-        run: |
-          cmake . -DCMAKE_FIND_FRAMEWORK=LAST
-          make -j3
+        uses: lukka/run-cmake@v10.0
+        with:
+          configurePreset: default
+          buildPreset: default
