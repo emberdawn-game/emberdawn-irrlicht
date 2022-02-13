@@ -28,14 +28,14 @@ jobs:
       - name: Build
         uses: lukka/run-cmake@v10.0
         with:
-          configurePreset: default
-          buildPreset: default
+          configurePreset: release
+          buildPreset: release
       - name: Test (headless)
         run: |
-          ./cmake-build-default/bin/Linux/AutomatedTest null
+          ./cmake-build-release/bin/Linux/AutomatedTest null
       - name: Test (OpenGLES2)
         run: |
-          LIBGL_ALWAYS_SOFTWARE=true xvfb-run ./cmake-build-default/bin/Linux/AutomatedTest ogles2
+          LIBGL_ALWAYS_SOFTWARE=true xvfb-run ./cmake-build-release/bin/Linux/AutomatedTest ogles2
 
   windows:
     runs-on: windows-latest
@@ -52,8 +52,8 @@ jobs:
       - name: Build
         uses: lukka/run-cmake@v10.0
         with:
-          configurePreset: default
-          buildPreset: default
+          configurePreset: release
+          buildPreset: release
 
   macos:
     runs-on: macos-11
@@ -70,5 +70,5 @@ jobs:
       - name: Build
         uses: lukka/run-cmake@v10.0
         with:
-          configurePreset: default
-          buildPreset: default
+          configurePreset: release
+          buildPreset: release

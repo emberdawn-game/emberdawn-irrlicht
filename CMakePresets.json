@@ -7,12 +7,16 @@
   },
   "configurePresets": [
     {
-      "name": "default",
-      "displayName": "Default Configuration",
-      "description": "Default build using Ninja generator",
+      "name": "release",
+      "displayName": "Release",
+      "description": "Release configuration",
       "generator": "Ninja",
-      "binaryDir": "${sourceDir}/cmake-build-default",
+      "binaryDir": "${sourceDir}/cmake-build-${presetName}",
       "cacheVariables": {
+        "CMAKE_BUILD_TYPE": {
+          "type": "STRING",
+          "value": "Release"
+        },
         "BUILD_EXAMPLES": {
           "type": "BOOL",
           "value": true
@@ -22,8 +26,8 @@
   ],
   "buildPresets": [
     {
-      "name": "default",
-      "configurePreset": "default"
+      "name": "release",
+      "configurePreset": "release"
     }
   ]
 }
