@@ -32,7 +32,7 @@ jobs:
           buildPreset: release
       - name: Test (headless)
         run: |
-          ./cmake-build-release/bin/Linux/AutomatedTest null
+          ./cmake-build-release/bin/AutomatedTest null
       - name: Test (OpenGLES2)
         run: |
           LIBGL_ALWAYS_SOFTWARE=true xvfb-run ./cmake-build-release/bin/AutomatedTest ogles2
