@@ -36,9 +36,6 @@ jobs:
       - name: Test (OpenGLES2)
         run: |
           LIBGL_ALWAYS_SOFTWARE=true xvfb-run ./cmake-build-default/bin/Linux/AutomatedTest ogles2
-      - name: Test (OpenGLES1)
-        run: |
-          LIBGL_ALWAYS_SOFTWARE=true xvfb-run ./cmake-build-default/bin/Linux/AutomatedTest ogles1
 
   win64:
     runs-on: ubuntu-20.04
