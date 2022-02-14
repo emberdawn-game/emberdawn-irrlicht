@@ -109,7 +109,7 @@ set(link_includes
 set(link_libs
 	"ZLIB::ZLIB"
 	"${JPEG_LIBRARIES}"
-	"png"
+	"$<IF:$<TARGET_EXISTS:png>,png,png_static>"
 
 	${OPENGL_LIBRARIES}
 	${OPENGLES_LIBRARY}
