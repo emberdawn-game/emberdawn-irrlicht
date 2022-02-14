@@ -5,18 +5,7 @@
 #ifndef __IRR_COMPILE_CONFIG_H_INCLUDED__
 #define __IRR_COMPILE_CONFIG_H_INCLUDED__
 
-//! Identifies the EmberdawnIrrlicht fork customized for Emberdawn
-#define IRRLICHT_VERSION_MT_REVISION 4
-#define IRRLICHT_VERSION_EMBERDAWN "emberdawn1"
-
-//! Irrlicht SDK Version
-#define IRRLICHT_VERSION_MAJOR 1
-#define IRRLICHT_VERSION_MINOR 9
-#define IRRLICHT_VERSION_REVISION 0
-// This flag will be defined only in SVN, the official release code will have
-// it undefined
-#define IRRLICHT_VERSION_SVN alpha
-#define IRRLICHT_SDK_VERSION "1.9.0" IRRLICHT_VERSION_EMBERDAWN
+#include "IrrCmakeConfigured.h"
 
 #include <stdio.h> // TODO: Although included elsewhere this is required at least for mingw
 

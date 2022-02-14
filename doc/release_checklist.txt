@@ -9,8 +9,7 @@ Note: Generally the more platforms, compilers, settings you can test the better.
     but on Linux command line you have to compile them individually.
 
 - VERSION UPDATES:
-- - check IRRLICHT_SDK_VERSION (in IrrCompileConfig.h)
-- - check version number in the Makefile
+- - check version number in CMakeLists.txt
 - - update readme.txt (version number, supported compilers)
 - - Add new release information (date+version-number) in changes.txt
 - - go through folders if other .txt files still make sense (things change and updating those files tends to be forgotten)

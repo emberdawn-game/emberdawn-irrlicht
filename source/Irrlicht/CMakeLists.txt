@@ -2,6 +2,14 @@ option(BUILD_SHARED_LIBS "Build shared library" TRUE)
 
 # Compiler flags
 
+add_definitions("-D_IRRLICHT_VERSION=${PROJECT_VERSION}")
+add_definitions("-D_IRRLICHT_VERSION_MAJOR=${PROJECT_VERSION_MAJOR}")
+add_definitions("-D_IRRLICHT_VERSION_MINOR=${PROJECT_VERSION_MINOR}")
+add_definitions("-D_IRRLICHT_VERSION_PATCH=${PROJECT_VERSION_PATCH}")
+if(PROJECT_VERSION_PRERELEASE)
+	add_definitions("-D_IRRLICHT_VERSION_PRERELEASE=${PROJECT_VERSION_MAJOR}")
+endif()
+
 add_definitions(-DIRRLICHT_EXPORTS)
 if(NOT BUILD_SHARED_LIBS)
 	add_definitions(-D_IRR_STATIC_LIB_)
