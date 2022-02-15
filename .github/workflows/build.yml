@@ -13,8 +13,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Install system dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install libxxf86vm-dev libgl1-mesa-dev -qyy
+          sudo apt update
+          sudo apt install libxxf86vm-dev libgl1-mesa-dev -qyy
       - name: Install CMake
         uses: lukka/get-cmake@v3.21.2
       - name: Set up vcpkg
