@@ -56,7 +56,8 @@ export(EXPORT EmberdawnIrrlicht-export
 )
 
 # Installation of headers.
-install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/"
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/" "${PROJECT_BINARY_DIR}/include/"
+	FILES_MATCHING PATTERN "*.h"
 	DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/emberdawn-irrlicht"
 )
 
