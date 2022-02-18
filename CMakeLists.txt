@@ -33,13 +33,12 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 
-configure_file(
-	${PROJECT_SOURCE_DIR}/include/IrrCmakeConfigured.h.in
-	${PROJECT_BINARY_DIR}/include/IrrCmakeConfigured.h)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
+add_subdirectory(include)
 
 include_directories(${PROJECT_BINARY_DIR}/include)
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 add_subdirectory(source/Irrlicht)
 
 option(BUILD_EXAMPLES "Build example applications" FALSE)
@@ -53,12 +52,6 @@ endif()
 export(EXPORT EmberdawnIrrlicht-export
 	FILE "${CMAKE_CURRENT_BINARY_DIR}/cmake/EmberdawnIrrlichtTargets.cmake"
 	NAMESPACE EmberdawnIrrlicht::
-)
-
-# Installation of headers.
-install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/" "${PROJECT_BINARY_DIR}/include/"
-	DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/emberdawn-irrlicht"
-	FILES_MATCHING PATTERN "*.h"
 )
 
 # Installation of CMake target and configuration files.
