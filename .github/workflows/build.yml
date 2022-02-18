@@ -28,8 +28,7 @@ jobs:
           configurePreset: ci-linux
           buildPreset: ci-linux
       - name: Test (headless)
-        run: |
-          ./cmake-build-release/bin/AutomatedTest null
+        run: ./cmake-build-ci-linux/bin/AutomatedTest null
       - name: Test (OpenGLES2)
         run: |
           LIBGL_ALWAYS_SOFTWARE=true xvfb-run ./cmake-build-ci-linux/bin/AutomatedTest ogles2
