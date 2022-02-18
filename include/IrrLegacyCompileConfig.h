@@ -90,7 +90,6 @@
 #define _IRR_OSX_PLATFORM_
 #define _IRR_COMPILE_WITH_OSX_DEVICE_
 #define NO_IRR_COMPILE_WITH_OGLES1_
-#define NO_IRR_COMPILE_WITH_OGLES2_
 #define NO_IRR_COMPILE_WITH_WEBGL1_
 #endif
 #endif
@@ -99,7 +98,6 @@
 #define _IRR_EMSCRIPTEN_PLATFORM_
 #define NO_IRR_COMPILE_WITH_JOYSTICK_EVENTS_
 #define NO_IRR_COMPILE_WITH_OGLES1_
-#define _IRR_COMPILE_WITH_OGLES2_
 #define _IRR_COMPILE_WITH_WEBGL1_
 #define _IRR_COMPILE_WITH_EGL_MANAGER_
 #define _IRR_COMPILE_WITH_SDL_DEVICE_
@@ -228,18 +226,6 @@ Depending on platform you may have to enable _IRR_OGLES1_USE_KHRONOS_API_HEADERS
 #define _IRR_COMPILE_WITH_EAGL_MANAGER_
 #endif
 #endif
-#endif
-
-//! Define _IRR_COMPILE_WITH_OGLES2_ to compile the Irrlicht engine with OpenGL ES 2.0.
-/** If you do not wish the engine to be compiled with OpenGL ES 2.0, comment this
-define out. */
-#if defined(_IRR_ANDROID_PLATFORM_) || defined(_IRR_IOS_PLATFORM_)
-#define _IRR_COMPILE_WITH_OGLES2_
-#else
-//#define _IRR_COMPILE_WITH_OGLES2_
-#endif
-#ifdef NO_IRR_COMPILE_WITH_OGLES2_
-#undef _IRR_COMPILE_WITH_OGLES2_
 #endif
 
 //! Define _IRR_COMPILE_WITH_WEBGL1_ to compile Irrlicht engine with a WebGL friendly

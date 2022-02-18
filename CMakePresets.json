@@ -27,14 +27,21 @@
       "name": "debug",
       "displayName": "Debug",
       "description": "Debug configuration",
-      "generator": "Ninja",
-      "binaryDir": "${sourceDir}/cmake-build-${presetName}",
+      "inherits": "release",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": {
           "type": "STRING",
           "value": "Debug"
-        },
-        "BUILD_EXAMPLES": {
+        }
+      }
+    },
+    {
+      "name": "ci-linux",
+      "displayName": "Linux CI",
+      "description": "Configuration used for CI on Linux",
+      "inherits": "release",
+      "cacheVariables": {
+        "USE_OGLES2": {
           "type": "BOOL",
           "value": true
         }
