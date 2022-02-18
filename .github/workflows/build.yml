@@ -54,6 +54,8 @@ jobs:
         with:
           configurePreset: release
           buildPreset: release
+      - name: Test (OpenGL)
+        run: ./cmake-build-release/bin/AutomatedTest.exe
 
   macos:
     runs-on: macos-11
