@@ -25,8 +25,8 @@ jobs:
       - name: Build
         uses: lukka/run-cmake@v10.0
         with:
-          configurePreset: release
-          buildPreset: release
+          configurePreset: ci-linux
+          buildPreset: ci-linux
       - name: Test (headless)
         run: |
           ./cmake-build-release/bin/AutomatedTest null
