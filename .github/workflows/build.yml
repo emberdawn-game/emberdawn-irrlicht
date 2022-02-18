@@ -50,6 +50,8 @@ jobs:
         with:
           configurePreset: release
           buildPreset: release
+      - name: Test (headless)
+        run: ./cmake-build-release/bin/AutomatedTest.exe null
       - name: Test (OpenGL)
         run: ./cmake-build-release/bin/AutomatedTest.exe
 
@@ -70,5 +72,7 @@ jobs:
         with:
           configurePreset: release
           buildPreset: release
+      - name: Test (headless)
+        run: ./cmake-build-release/bin/AutomatedTest null
       - name: Test (OpenGL)
         run: ./cmake-build-release/bin/AutomatedTest
