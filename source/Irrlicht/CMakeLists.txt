@@ -50,8 +50,6 @@ find_path(OPENGL_REGISTRY_INCLUDE_DIRS "GL/glcorearb.h")
 include(CheckSymbolExists)
 set(CMAKE_REQUIRED_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 unset(OGLES1_ENABLED CACHE)
-unset(OGLES2_ENABLED CACHE)
-unset(OGL_ENABLED CACHE)
 unset(XINPUT2_ENABLED CACHE)
 
 check_symbol_exists(_IRR_COMPILE_WITH_OGLES1_ "IrrLegacyCompileConfig.h" OGLES1_ENABLED)
