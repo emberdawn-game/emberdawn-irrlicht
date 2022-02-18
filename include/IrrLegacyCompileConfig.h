@@ -81,7 +81,6 @@
 #if defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__) || defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 #define _IRR_IOS_PLATFORM_
 #define _IRR_COMPILE_WITH_IOS_DEVICE_
-#define NO_IRR_COMPILE_WITH_OPENGL_
 // The application state events and following methods: IrrlichtDevice::isWindowActive, IrrlichtDevice::isWindowFocused,
 // IrrlichtDevice::isWindowMinimized works out of box only if you'll use built-in CIrrDelegateiOS,
 // so _IRR_COMPILE_WITH_IOS_BUILTIN_MAIN_ must be enabled in this case. If you need a custom UIApplicationDelegate
@@ -99,7 +98,6 @@
 #if defined(__EMSCRIPTEN__)
 #define _IRR_EMSCRIPTEN_PLATFORM_
 #define NO_IRR_COMPILE_WITH_JOYSTICK_EVENTS_
-#define NO_IRR_COMPILE_WITH_OPENGL_
 #define NO_IRR_COMPILE_WITH_OGLES1_
 #define _IRR_COMPILE_WITH_OGLES2_
 #define _IRR_COMPILE_WITH_WEBGL1_
@@ -113,7 +111,6 @@
 #define _IRR_ANDROID_PLATFORM_
 #define _IRR_COMPILE_WITH_ANDROID_DEVICE_
 #define _IRR_COMPILE_ANDROID_ASSET_READER_
-#define NO_IRR_COMPILE_WITH_OPENGL_
 #endif
 
 #if defined(__SVR4) && defined(__sun)
@@ -183,14 +180,6 @@ If not defined, Windows Multimedia library is used, which offers also broad supp
 #undef _IRR_COMPILE_WITH_DIRECTINPUT_JOYSTICK_
 #endif
 
-#endif
-
-//! Define _IRR_COMPILE_WITH_OPENGL_ to compile the Irrlicht engine with OpenGL.
-/** If you do not wish the engine to be compiled with OpenGL, comment this
-define out. */
-#define _IRR_COMPILE_WITH_OPENGL_
-#ifdef NO_IRR_COMPILE_WITH_OPENGL_
-#undef _IRR_COMPILE_WITH_OPENGL_
 #endif
 
 //! Define required options for OpenGL drivers.
