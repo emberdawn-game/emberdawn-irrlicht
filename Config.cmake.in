@@ -1,5 +1,5 @@
 @PACKAGE_INIT@
 
 if(NOT TARGET EmberdawnIrrlicht::EmberdawnIrrlicht)
-	include("${CMAKE_CURRENT_LIST_DIR}/EmberdawnIrrlichtTargets.cmake")
+	include("${CMAKE_CURRENT_LIST_DIR}/emberdawn-irrlicht-targets.cmake")
 endif()

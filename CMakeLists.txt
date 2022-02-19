@@ -57,31 +57,31 @@ endif()
 # The file is placed in the location FILE points to, where CMake can easily
 # locate it by pointing CMAKE_PREFIX_PATH to this project root.
 export(EXPORT EmberdawnIrrlicht-export
-	FILE "${CMAKE_CURRENT_BINARY_DIR}/cmake/EmberdawnIrrlichtTargets.cmake"
+	FILE "${CMAKE_CURRENT_BINARY_DIR}/cmake/emberdawn-irrlicht-targets.cmake"
 	NAMESPACE EmberdawnIrrlicht::
 )
 
 # Installation of CMake target and configuration files.
 install(EXPORT EmberdawnIrrlicht-export
-	FILE EmberdawnIrrlichtTargets.cmake
+	FILE emberdawn-irrlicht-targets.cmake
 	NAMESPACE EmberdawnIrrlicht::
-	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/EmberdawnIrrlicht"
+	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/emberdawn-irrlicht"
 )
 
 include(CMakePackageConfigHelpers)
 configure_package_config_file("${PROJECT_SOURCE_DIR}/Config.cmake.in"
-	"${CMAKE_CURRENT_BINARY_DIR}/cmake/EmberdawnIrrlichtConfig.cmake"
-	INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/EmberdawnIrrlicht"
+	"${CMAKE_CURRENT_BINARY_DIR}/cmake/emberdawn-irrlicht-config.cmake"
+	INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/emberdawn-irrlicht"
 	NO_SET_AND_CHECK_MACRO
 	NO_CHECK_REQUIRED_COMPONENTS_MACRO
 )
 write_basic_package_version_file(
-	"${CMAKE_CURRENT_BINARY_DIR}/cmake/EmberdawnIrrlichtConfigVersion.cmake"
+	"${CMAKE_CURRENT_BINARY_DIR}/cmake/emberdawn-irrlicht-config-version.cmake"
 	COMPATIBILITY AnyNewerVersion
 )
 
 install(FILES
-	"${CMAKE_CURRENT_BINARY_DIR}/cmake/EmberdawnIrrlichtConfig.cmake"
-	"${CMAKE_CURRENT_BINARY_DIR}/cmake/EmberdawnIrrlichtConfigVersion.cmake"
-	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/EmberdawnIrrlicht"
+	"${CMAKE_CURRENT_BINARY_DIR}/cmake/emberdawn-irrlicht-config.cmake"
+	"${CMAKE_CURRENT_BINARY_DIR}/cmake/emberdawn-irrlicht-config-version.cmake"
+	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/emberdawn-irrlicht"
 )
