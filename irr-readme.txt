@@ -63,9 +63,6 @@ The Irrlicht Engine SDK version 1.9
   (libIrrlicht.so.versionNumber). Use the proper makefile target for this by
   running 'make sharedlib' in the source folder. See the Makefile for details.
 
-  For OSX you can find an XCode project file in source/Irrlicht/MacOSX. This will
-  build the libIrrlicht.a library necessary to create the apps.
-
 ==========================================================================
 3. Requirements
 ==========================================================================
