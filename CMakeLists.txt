@@ -46,7 +46,7 @@ add_subdirectory(include)
 
 include_directories(${PROJECT_BINARY_DIR}/include)
 
-add_subdirectory(source/Irrlicht)
+add_subdirectory(src)
 
 option(BUILD_EXAMPLES "Build example applications" FALSE)
 if(BUILD_EXAMPLES)
