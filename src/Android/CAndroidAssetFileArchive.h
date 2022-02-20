@@ -13,7 +13,7 @@
 
 #include "IReadFile.h"
 #include "IFileArchive.h"
-#include "CFileList.h"
+#include "io/CFileList.h"
 
 #include <android/native_activity.h>
 

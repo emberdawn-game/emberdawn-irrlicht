@@ -3,7 +3,7 @@
 
 
 #include "IGUIWindow.h"
-#include "CGUIAttributeEditor.h"
+#include "gui/CGUIAttributeEditor.h"
 //#include "IGUIStaticText.h"
 #include "IGUIButton.h"
 #include "IGUITreeView.h"

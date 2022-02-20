@@ -6,7 +6,7 @@
 	Originally Klasker's but I've messed around with it lots - Gaz
 */
 
-#include "CGUIPanel.h"
+#include "gui/CGUIPanel.h"
 #include "IGUIEnvironment.h"
 #include "IGUIScrollBar.h"
 #include "IGUITabControl.h"

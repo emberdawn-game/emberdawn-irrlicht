@@ -14,8 +14,8 @@
 #include "ITexture.h"
 #include "EDriverFeatures.h"
 #include "os.h"
-#include "CImage.h"
-#include "CColorConverter.h"
+#include "video/image/CImage.h"
+#include "video/image/CColorConverter.h"
 
 // Check if GL version we compile with should have the glGenerateMipmap function.
 #if defined(GL_VERSION_3_0) || defined(GL_ES_VERSION_2_0)

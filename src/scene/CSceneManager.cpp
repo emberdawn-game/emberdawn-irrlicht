@@ -20,27 +20,27 @@
 // We need this include for the case of skinned mesh support without
 // any such loader
 #ifdef _IRR_COMPILE_WITH_SKINNED_MESH_SUPPORT_
-#include "CSkinnedMesh.h"
+#include "mesh/CSkinnedMesh.h"
 #endif
 
 #ifdef _IRR_COMPILE_WITH_X_LOADER_
-#include "CXMeshFileLoader.h"
+#include "mesh/loader/CXMeshFileLoader.h"
 #endif
 
 #ifdef _IRR_COMPILE_WITH_OBJ_LOADER_
-#include "COBJMeshFileLoader.h"
+#include "mesh/loader/COBJMeshFileLoader.h"
 #endif
 
 #ifdef _IRR_COMPILE_WITH_B3D_LOADER_
-#include "CB3DMeshFileLoader.h"
+#include "mesh/loader/CB3DMeshFileLoader.h"
 #endif
 
 #ifdef _IRR_COMPILE_WITH_BILLBOARD_SCENENODE_
 #include "CBillboardSceneNode.h"
 #endif // _IRR_COMPILE_WITH_BILLBOARD_SCENENODE_
-#include "CAnimatedMeshSceneNode.h"
+#include "mesh/CAnimatedMeshSceneNode.h"
 #include "CCameraSceneNode.h"
-#include "CMeshSceneNode.h"
+#include "mesh/CMeshSceneNode.h"
 #include "CDummyTransformationSceneNode.h"
 #include "CEmptySceneNode.h"
 

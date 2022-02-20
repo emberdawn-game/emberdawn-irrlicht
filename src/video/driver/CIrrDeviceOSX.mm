@@ -22,7 +22,7 @@
 #include <stdio.h>
 #include <sys/utsname.h>
 #include "COSOperator.h"
-#include "CColorConverter.h"
+#include "video/image/CColorConverter.h"
 #include "irrlicht.h"
 #include <algorithm>
 

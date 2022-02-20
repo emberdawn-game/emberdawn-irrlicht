@@ -13,7 +13,7 @@
 
 #include "IMeshLoader.h"
 #include "ISceneManager.h"
-#include "CSkinnedMesh.h"
+#include "scene/mesh/CSkinnedMesh.h"
 #include "SB3DStructs.h"
 #include "IReadFile.h"
 

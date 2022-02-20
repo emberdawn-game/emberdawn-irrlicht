@@ -2,7 +2,7 @@
 #include "driverChoice.h"
 
 // include the gui creator element factory
-#include "CGUIEditFactory.h"
+#include "gui/CGUIEditFactory.h"
 
 using namespace irr;
 using namespace gui;

@@ -7,7 +7,7 @@
 
 #include "IMeshLoader.h"
 #include "irrString.h"
-#include "CSkinnedMesh.h"
+#include "scene/mesh/CSkinnedMesh.h"
 
 
 namespace irr

@@ -6,7 +6,7 @@
 #define __C_GUI_TEXTURE_CACHE_BROWSER_H_INCLUDED__
 
 #include "IGUIWindow.h"
-#include "CGUIPanel.h"
+#include "gui/CGUIPanel.h"
 #include "IGUIImage.h"
 #include "EGUIEditTypes.h"
 

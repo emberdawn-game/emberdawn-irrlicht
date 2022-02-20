@@ -1,13 +1,13 @@
 
-#include "CGUIAttributeEditor.h"
+#include "gui/CGUIAttributeEditor.h"
 #include "IGUIEnvironment.h"
 #include "IFileSystem.h"
 #include "IVideoDriver.h"
 #include "IAttributes.h"
 #include "IGUIFont.h"
 #include "IGUIScrollBar.h"
-#include "CGUIAttribute.h"
-#include "CGUIStringAttribute.h"
+#include "gui/CGUIAttribute.h"
+#include "gui/CGUIStringAttribute.h"
 
 namespace irr
 {

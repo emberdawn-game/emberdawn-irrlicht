@@ -1,7 +1,7 @@
 #ifndef __C_GUI_BOOL_ATTRIBUTE_H_INCLUDED__
 #define __C_GUI_BOOL_ATTRIBUTE_H_INCLUDED__
 
-#include "CGUIAttribute.h"
+#include "gui/CGUIAttribute.h"
 #include "IGUICheckBox.h"
 #include "EGUIEditTypes.h"
 

@@ -8,10 +8,10 @@
 
 #include "CAndroidAssetReader.h"
 
-#include "CReadFile.h"
+#include "io/CReadFile.h"
 #include "coreutil.h"
 #include "CAndroidAssetReader.h"
-#include "CIrrDeviceAndroid.h"
+#include "video/driver/CIrrDeviceAndroid.h"
 
 #include <android_native_app_glue.h>
 #include <android/native_activity.h>

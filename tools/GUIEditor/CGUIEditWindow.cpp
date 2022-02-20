@@ -1,5 +1,5 @@
 
-#include "CGUIEditWindow.h"
+#include "gui/CGUIEditWindow.h"
 #include "IGUISkin.h"
 #include "IGUIEnvironment.h"
 #include "IGUIElementFactory.h"
@@ -7,7 +7,7 @@
 #include "IGUIFont.h"
 #include "IGUITabControl.h"
 #include "IGUITreeView.h"
-#include "CGUIEditWorkspace.h"
+#include "gui/CGUIEditWorkspace.h"
 
 using namespace irr;
 using namespace gui;

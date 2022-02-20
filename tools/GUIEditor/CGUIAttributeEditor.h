@@ -2,7 +2,7 @@
 #define __C_GUI_ATTRIBUTE_EDITOR_H_INCLUDED__
 
 #include "IGUIElement.h"
-#include "CGUIPanel.h"
+#include "gui/CGUIPanel.h"
 #include "irrArray.h"
 #include "IAttributes.h"
 #include "EGUIEditTypes.h"

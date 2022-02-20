@@ -9,9 +9,9 @@
 
 #ifdef _IRR_COMPILE_WITH_ANDROID_DEVICE_
 
-#include "CIrrDeviceStub.h"
+#include "video/driver/CIrrDeviceStub.h"
 #include "IrrlichtDevice.h"
-#include "IImagePresenter.h"
+#include "video/driver/IImagePresenter.h"
 #include "ICursorControl.h"
 
 #include <android/sensor.h>

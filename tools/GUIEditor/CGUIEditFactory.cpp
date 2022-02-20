@@ -1,20 +1,20 @@
-#include "CGUIEditFactory.h"
+#include "gui/CGUIEditFactory.h"
 #include "IGUIEnvironment.h"
 #include "irrString.h"
 
 #include "EGUIEditTypes.h"
 
-#include "CGUIEditWorkspace.h"
-#include "CGUIEditWindow.h"
-#include "CGUIPanel.h"
-#include "CGUITextureCacheBrowser.h"
-#include "CGUIAttributeEditor.h"
-#include "CGUIStringAttribute.h"
-#include "CGUIBoolAttribute.h"
-#include "CGUIEnumAttribute.h"
-#include "CGUIColorAttribute.h"
-#include "CGUITextureAttribute.h"
-#include "CGUIDummyEditorStub.h"
+#include "gui/CGUIEditWorkspace.h"
+#include "gui/CGUIEditWindow.h"
+#include "gui/CGUIPanel.h"
+#include "gui/CGUITextureCacheBrowser.h"
+#include "gui/CGUIAttributeEditor.h"
+#include "gui/CGUIStringAttribute.h"
+#include "gui/CGUIBoolAttribute.h"
+#include "gui/CGUIEnumAttribute.h"
+#include "gui/CGUIColorAttribute.h"
+#include "gui/CGUITextureAttribute.h"
+#include "gui/CGUIDummyEditorStub.h"
 
 namespace irr
 {

@@ -3,19 +3,19 @@
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in irrlicht.h
 
-#include "CIrrDeviceAndroid.h"
+#include "video/driver/CIrrDeviceAndroid.h"
 
 #ifdef _IRR_COMPILE_WITH_ANDROID_DEVICE_
 
 #include "os.h"
-#include "CFileSystem.h"
+#include "io/CFileSystem.h"
 #include "CAndroidAssetReader.h"
 #include "CAndroidAssetFileArchive.h"
 #include "CKeyEventWrapper.h"
-#include "CEGLManager.h"
+#include "video/driver/CEGLManager.h"
 #include "ISceneManager.h"
 #include "IGUIEnvironment.h"
-#include "CEGLManager.h"
+#include "video/driver/CEGLManager.h"
 
 namespace irr
 {

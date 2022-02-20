@@ -15,31 +15,31 @@ static const char* const copyright = "Irrlicht Engine (c) 2002-2017 Nikolaus Geb
 
 #include "irrlicht.h"
 #ifdef _IRR_COMPILE_WITH_WINDOWS_DEVICE_
-#include "CIrrDeviceWin32.h"
+#include "video/driver/CIrrDeviceWin32.h"
 #endif
 
 #ifdef _IRR_COMPILE_WITH_X11_DEVICE_
-#include "CIrrDeviceLinux.h"
+#include "video/driver/CIrrDeviceLinux.h"
 #endif
 
 #ifdef _IRR_COMPILE_WITH_OSX_DEVICE_
-#include "CIrrDeviceOSX.h"
+#include "video/driver/CIrrDeviceOSX.h"
 #endif
 
 #ifdef _IRR_COMPILE_WITH_FB_DEVICE_
-#include "CIrrDeviceFB.h"
+#include "video/driver/CIrrDeviceFB.h"
 #endif
 
 #ifdef _IRR_COMPILE_WITH_SDL_DEVICE_
-#include "CIrrDeviceSDL.h"
+#include "video/driver/CIrrDeviceSDL.h"
 #endif
 
 #ifdef _IRR_COMPILE_WITH_CONSOLE_DEVICE_
-#include "CIrrDeviceConsole.h"
+#include "video/driver/CIrrDeviceConsole.h"
 #endif
 
 #ifdef _IRR_COMPILE_WITH_IOS_DEVICE_
-#include "CIrrDeviceiOS.h"
+#include "video/driver/CIrrDeviceiOS.h"
 #endif
 
 #ifdef _IRR_COMPILE_WITH_ANDROID_DEVICE_

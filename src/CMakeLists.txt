@@ -124,88 +124,88 @@ set(link_libs
 # Source files
 
 set(IRRMESHLOADER
-	CB3DMeshFileLoader.cpp
-	COBJMeshFileLoader.cpp
-	CXMeshFileLoader.cpp
+	scene/mesh/loader/CB3DMeshFileLoader.cpp
+	scene/mesh/loader/COBJMeshFileLoader.cpp
+	scene/mesh/loader/CXMeshFileLoader.cpp
 )
 
 add_library(IRRMESHOBJ OBJECT
-	CSkinnedMesh.cpp
-	CBoneSceneNode.cpp
-	CMeshSceneNode.cpp
-	CAnimatedMeshSceneNode.cpp
+	scene/mesh/CSkinnedMesh.cpp
+	scene/mesh/CBoneSceneNode.cpp
+	scene/mesh/CMeshSceneNode.cpp
+	scene/mesh/CAnimatedMeshSceneNode.cpp
 	${IRRMESHLOADER}
 )
 
 add_library(IRROBJ OBJECT
-	CBillboardSceneNode.cpp
-	CCameraSceneNode.cpp
-	CDummyTransformationSceneNode.cpp
-	CEmptySceneNode.cpp
-	CMeshManipulator.cpp
-	CSceneCollisionManager.cpp
-	CSceneManager.cpp
-	CMeshCache.cpp
-	CDefaultSceneNodeFactory.cpp
+	scene/CBillboardSceneNode.cpp
+	scene/CCameraSceneNode.cpp
+	scene/CDummyTransformationSceneNode.cpp
+	scene/CEmptySceneNode.cpp
+	scene/CMeshManipulator.cpp
+	scene/CSceneCollisionManager.cpp
+	scene/CSceneManager.cpp
+	scene/CMeshCache.cpp
+	scene/CDefaultSceneNodeFactory.cpp
 )
 
 set(IRRDRVROBJ
-	CNullDriver.cpp
-	COpenGLCacheHandler.cpp
-	COpenGLDriver.cpp
-	COpenGLShaderMaterialRenderer.cpp
-	COpenGLSLMaterialRenderer.cpp
-	COpenGLExtensionHandler.cpp
-	COGLESDriver.cpp
-	COGLESExtensionHandler.cpp
-	COGLES2Driver.cpp
-	COGLES2ExtensionHandler.cpp
-	COGLES2FixedPipelineRenderer.cpp
-	COGLES2MaterialRenderer.cpp
-	COGLES2Renderer2D.cpp
-	CWebGL1Driver.cpp
-	CGLXManager.cpp
-	CWGLManager.cpp
-	CEGLManager.cpp
+	video/driver/CNullDriver.cpp
+	video/driver/COpenGLCacheHandler.cpp
+	video/driver/COpenGLDriver.cpp
+	video/driver/COpenGLShaderMaterialRenderer.cpp
+	video/driver/COpenGLSLMaterialRenderer.cpp
+	video/driver/COpenGLExtensionHandler.cpp
+	video/driver/COGLESDriver.cpp
+	video/driver/COGLESExtensionHandler.cpp
+	video/driver/COGLES2Driver.cpp
+	video/driver/COGLES2ExtensionHandler.cpp
+	video/driver/COGLES2FixedPipelineRenderer.cpp
+	video/driver/COGLES2MaterialRenderer.cpp
+	video/driver/COGLES2Renderer2D.cpp
+	video/driver/CWebGL1Driver.cpp
+	video/driver/CGLXManager.cpp
+	video/driver/CWGLManager.cpp
+	video/driver/CEGLManager.cpp
 )
 
 set(IRRIMAGEOBJ
-	CColorConverter.cpp
-	CImage.cpp
-	CImageLoaderBMP.cpp
-	CImageLoaderJPG.cpp
-	CImageLoaderPNG.cpp
-	CImageLoaderTGA.cpp
-	CImageWriterJPG.cpp
-	CImageWriterPNG.cpp
+	video/image/CColorConverter.cpp
+	video/image/CImage.cpp
+	video/image/CImageLoaderBMP.cpp
+	video/image/CImageLoaderJPG.cpp
+	video/image/CImageLoaderPNG.cpp
+	video/image/CImageLoaderTGA.cpp
+	video/image/CImageWriterJPG.cpp
+	video/image/CImageWriterPNG.cpp
 )
 
 add_library(IRRVIDEOOBJ OBJECT
-	CVideoModeList.cpp
-	CFPSCounter.cpp
+	video/driver/CVideoModeList.cpp
+	video/CFPSCounter.cpp
 	${IRRDRVROBJ}
 	${IRRIMAGEOBJ}
 )
 
 add_library(IRRIOOBJ OBJECT
-	CFileList.cpp
-	CFileSystem.cpp
-	CLimitReadFile.cpp
-	CMemoryFile.cpp
-	CReadFile.cpp
-	CWriteFile.cpp
-	CZipReader.cpp
-	CMountPointReader.cpp
-	CAttributes.cpp
+	io/CFileList.cpp
+	io/CFileSystem.cpp
+	io/CLimitReadFile.cpp
+	io/CMemoryFile.cpp
+	io/CReadFile.cpp
+	io/CWriteFile.cpp
+	io/CZipReader.cpp
+	io/CMountPointReader.cpp
+	io/CAttributes.cpp
 )
 
 add_library(IRROTHEROBJ OBJECT
-	CIrrDeviceSDL.cpp
-	CIrrDeviceLinux.cpp
-	CIrrDeviceConsole.cpp
-	CIrrDeviceStub.cpp
-	CIrrDeviceWin32.cpp
-	CIrrDeviceFB.cpp
+	video/driver/CIrrDeviceSDL.cpp
+	video/driver/CIrrDeviceLinux.cpp
+	video/driver/CIrrDeviceConsole.cpp
+	video/driver/CIrrDeviceStub.cpp
+	video/driver/CIrrDeviceWin32.cpp
+	video/driver/CIrrDeviceFB.cpp
 	CLogger.cpp
 	COSOperator.cpp
 	Irrlicht.cpp
@@ -225,41 +225,41 @@ elseif(APPLE)
 	# Build all IRROTHEROBJ sources as objc++, including the .cpp's
 	set_target_properties(IRROTHEROBJ PROPERTIES COMPILE_OPTIONS "-xobjective-c++")
 	target_sources(IRROTHEROBJ PRIVATE
-		CIrrDeviceOSX.mm
-		CNSOGLManager.mm
+		video/driver/CIrrDeviceOSX.mm
+		video/driver/CNSOGLManager.mm
 	)
 endif()
 
 add_library(IRRGUIOBJ OBJECT
-	CGUIButton.cpp
-	CGUICheckBox.cpp
-	CGUIComboBox.cpp
-	CGUIContextMenu.cpp
-	CGUIEditBox.cpp
-	CGUIEnvironment.cpp
-	CGUIFileOpenDialog.cpp
-	CGUIFont.cpp
-	CGUIImage.cpp
-	CGUIInOutFader.cpp
-	CGUIListBox.cpp
-	CGUIMenu.cpp
-	CGUIMeshViewer.cpp
-	CGUIMessageBox.cpp
-	CGUIModalScreen.cpp
-	CGUIScrollBar.cpp
-	CGUISpinBox.cpp
-	CGUISkin.cpp
-	CGUIStaticText.cpp
-	CGUITabControl.cpp
-	CGUITable.cpp
-	CGUIToolBar.cpp
-	CGUIWindow.cpp
-	CGUIColorSelectDialog.cpp
-	CDefaultGUIElementFactory.cpp
-	CGUISpriteBank.cpp
-	CGUIImageList.cpp
-	CGUITreeView.cpp
-	CGUIProfiler.cpp
+	gui/CGUIButton.cpp
+	gui/CGUICheckBox.cpp
+	gui/CGUIComboBox.cpp
+	gui/CGUIContextMenu.cpp
+	gui/CGUIEditBox.cpp
+	gui/CGUIEnvironment.cpp
+	gui/CGUIFileOpenDialog.cpp
+	gui/CGUIFont.cpp
+	gui/CGUIImage.cpp
+	gui/CGUIInOutFader.cpp
+	gui/CGUIListBox.cpp
+	gui/CGUIMenu.cpp
+	gui/CGUIMeshViewer.cpp
+	gui/CGUIMessageBox.cpp
+	gui/CGUIModalScreen.cpp
+	gui/CGUIScrollBar.cpp
+	gui/CGUISpinBox.cpp
+	gui/CGUISkin.cpp
+	gui/CGUIStaticText.cpp
+	gui/CGUITabControl.cpp
+	gui/CGUITable.cpp
+	gui/CGUIToolBar.cpp
+	gui/CGUIWindow.cpp
+	gui/CGUIColorSelectDialog.cpp
+	gui/CDefaultGUIElementFactory.cpp
+	gui/CGUISpriteBank.cpp
+	gui/CGUIImageList.cpp
+	gui/CGUITreeView.cpp
+	gui/CGUIProfiler.cpp
 )
 
 # Library

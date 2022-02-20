@@ -8,10 +8,10 @@
 
 #include "CAndroidAssetReader.h"
 
-#include "CReadFile.h"
+#include "io/CReadFile.h"
 #include "coreutil.h"
 #include "CAndroidAssetFileArchive.h"
-#include "CIrrDeviceAndroid.h"
+#include "video/driver/CIrrDeviceAndroid.h"
 #include "os.h"	// for logging (just keep it in even when not needed right now as it's used all the time)
 
 #include <android_native_app_glue.h>

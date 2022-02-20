@@ -4,7 +4,7 @@
 
 // Thanks to Midnight for all his testing, bug fixes and patches :)
 
-#include "CGUIEditWorkspace.h"
+#include "gui/CGUIEditWorkspace.h"
 #include "IGUIEnvironment.h"
 #include "IVideoDriver.h"
 #include "IOSOperator.h"
@@ -13,11 +13,11 @@
 #include "IXMLWriter.h"
 #include "IGUISkin.h"
 #include "IGUIElementFactory.h"
-#include "CGUIEditWindow.h"
+#include "gui/CGUIEditWindow.h"
 #include "IGUIContextMenu.h"
 #include "IGUIFileOpenDialog.h"
 #include "IGUITreeView.h"
-#include "CGUIAttribute.h"
+#include "gui/CGUIAttribute.h"
 #include "CMemoryReadWriteFile.h"
 
 namespace irr

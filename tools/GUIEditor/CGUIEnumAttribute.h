@@ -1,7 +1,7 @@
 #ifndef __C_GUI_ENUM_ATTRIBUTE_H_INCLUDED__
 #define __C_GUI_ENUM_ATTRIBUTE_H_INCLUDED__
 
-#include "CGUIAttribute.h"
+#include "gui/CGUIAttribute.h"
 #include "IGUIComboBox.h"
 #include "IGUIEditBox.h"
 #include "EGUIEditTypes.h"

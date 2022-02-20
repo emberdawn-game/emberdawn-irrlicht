@@ -20,7 +20,7 @@
 #include "irrString.h"
 #include "Keycodes.h"
 #include "COSOperator.h"
-#include "CColorConverter.h"
+#include "video/image/CColorConverter.h"
 #include "SIrrCreationParameters.h"
 #include "SExposedVideoData.h"
 #include "IGUISpriteBank.h"

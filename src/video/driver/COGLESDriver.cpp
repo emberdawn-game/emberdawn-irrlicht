@@ -15,7 +15,7 @@
 #include "COGLESMaterialRenderer.h"
 
 #include "EVertexAttributes.h"
-#include "CImage.h"
+#include "video/image/CImage.h"
 #include "os.h"
 #include "EProfileIDs.h"
 #include "IProfiler.h"

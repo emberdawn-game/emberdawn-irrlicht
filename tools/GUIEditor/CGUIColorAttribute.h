@@ -1,7 +1,7 @@
 #ifndef __C_GUI_COLOR_ATTRIBUTE_H_INCLUDED__
 #define __C_GUI_COLOR_ATTRIBUTE_H_INCLUDED__
 
-#include "CGUIAttribute.h"
+#include "gui/CGUIAttribute.h"
 #include "IGUIStaticText.h"
 #include "IGUIScrollBar.h"
 #include "IGUITabControl.h"

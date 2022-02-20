@@ -6,7 +6,7 @@
 #define __C_GUIEDIT_WORKSPACE_H_INCLUDED__
 
 #include "IGUIElement.h"
-#include "CGUIEditWindow.h"
+#include "gui/CGUIEditWindow.h"
 #include "EGUIEditTypes.h"
 
 namespace irr

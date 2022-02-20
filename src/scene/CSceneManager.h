@@ -11,7 +11,7 @@
 #include "irrString.h"
 #include "irrArray.h"
 #include "IMeshLoader.h"
-#include "CAttributes.h"
+#include "io/CAttributes.h"
 
 namespace irr
 {
