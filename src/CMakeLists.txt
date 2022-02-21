@@ -11,75 +11,6 @@ if(USE_OGLES2)
 	find_package(OpenGLES2 REQUIRED)
 endif()
 
-# Compiler flags
-
-add_definitions(-DIRRLICHT_EXPORTS)
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-	add_definitions(-D_DEBUG)
-endif()
-set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
-
-if(CMAKE_CXX_COMPILER_ID MATCHES "^(GNU|Clang|AppleClang)$")
-	set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-	set(CMAKE_CXX_FLAGS_DEBUG "-g")
-
-	add_compile_options(-Wall -pipe -fno-exceptions -fno-rtti)
-
-	# Enable SSE for floating point math on 32-bit x86 by default
-	# reasoning see minetest issue #11810 and https://gcc.gnu.org/wiki/FloatingPointMath
-	if(CMAKE_SIZEOF_VOID_P EQUAL 4)
-		include(CheckCXXSourceCompiles)
-		check_cxx_source_compiles("#ifndef __i686__\n#error\n#endif\nint main(){}" IS_I686)
-		if(IS_I686)
-			message(STATUS "Detected Intel x86: using SSE instead of x87 FPU")
-			add_compile_options(-mfpmath=sse -msse)
-		endif()
-	endif()
-
-elseif(MSVC)
-	add_compile_options(/GR-)
-
-	# Enable SSE for floating point math on 32-bit x86 by default
-	# reasoning see minetest issue #11810 and https://gcc.gnu.org/wiki/FloatingPointMath
-	if(CMAKE_SIZEOF_VOID_P EQUAL 4)
-		add_compile_options(/arch:SSE)
-	endif()
-endif()
-
-# To configure the features available in this Irrlicht build please edit
-# include/IrrLegacyCompileConfig.h and re-run CMake from a clean state
-include(CheckSymbolExists)
-set(CMAKE_REQUIRED_INCLUDES ${PROJECT_SOURCE_DIR}/include)
-unset(OGLES1_ENABLED CACHE)
-unset(XINPUT2_ENABLED CACHE)
-
-check_symbol_exists(_IRR_COMPILE_WITH_OGLES1_ "IrrLegacyCompileConfig.h" OGLES1_ENABLED)
-if(OGLES1_ENABLED)
-	# only tested on Android, probably works on Linux (is this needed anywhere else?)
-	find_library(OPENGLES_LIBRARY NAMES GLESv1_CM REQUIRED)
-	find_library(EGL_LIBRARY NAMES EGL REQUIRED)
-endif()
-check_symbol_exists(_IRR_LINUX_X11_XINPUT2_ "IrrLegacyCompileConfig.h" XINPUT2_ENABLED)
-if(XINPUT2_ENABLED)
-	find_library(XINPUT_LIBRARY Xi REQUIRED)
-endif()
-
-# Platform-specific libs
-
-if(ANDROID)
-	enable_language(C)
-	add_library(NativeAppGlue STATIC "${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c")
-	target_include_directories(NativeAppGlue PUBLIC "${ANDROID_NDK}/sources/android/native_app_glue/")
-elseif(APPLE)
-	find_library(COCOA_LIB Cocoa REQUIRED)
-	find_library(IOKIT_LIB IOKit REQUIRED)
-
-	add_definitions(-DGL_SILENCE_DEPRECATION)
-else()
-	# Unix probably
-	find_package(X11 REQUIRED)
-endif()
-
 add_library(Irrlicht SHARED
 	gui/BuiltInFont.h
 	gui/CDefaultGUIElementFactory.cpp
@@ -315,7 +246,9 @@ target_link_libraries(Irrlicht
 		"${X11_Xxf86vm_LIB}")
 set_target_properties(Irrlicht PROPERTIES
 	VERSION ${PROJECT_VERSION}
-	SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
+	SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+	DEFINE_SYMBOL IRRLICHT_EXPORTS
+	POSITION_INDEPENDENT_CODE ON)
 
 if(ANDROID)
 	target_sources(Irrlicht PRIVATE
@@ -338,6 +271,50 @@ elseif(APPLE)
 		COMPILE_OPTIONS -xobjective-c++)
 elseif(WIN32)
 	set_target_properties(Irrlicht PROPERTIES PREFIX "") # for DLL name
+endif()
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+	target_compile_definitions(Irrlicht PRIVATE -D_DEBUG)
+endif()
+
+target_include_directories(Irrlicht PRIVATE
+	${CMAKE_CURRENT_SOURCE_DIR}
+	${link_includes})
+
+target_link_libraries(Irrlicht
+	PUBLIC Include
+	PRIVATE ${link_libs})
+
+set_target_properties(Irrlicht PROPERTIES
+	VERSION ${PROJECT_VERSION}
+	SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+)
+
+if(WIN32)
+	set_target_properties(Irrlicht PROPERTIES PREFIX "") # for DLL name
+endif()
+
+if(CMAKE_CXX_COMPILER_ID MATCHES "^(GNU|Clang|AppleClang)$")
+	target_compile_options(Irrlicht PRIVATE -Wall -pipe -fno-exceptions -fno-rtti)
+	# Use SSE for floating point math on 32-bit x86.
+	# See: github.com/minetest/minetest/issues/11810
+	# See: https://gcc.gnu.org/wiki/FloatingPointMath
+	if(CMAKE_SIZEOF_VOID_P EQUAL 4)
+		include(CheckCXXSourceCompiles)
+		check_cxx_source_compiles("#ifndef __i686__\n#error\n#endif\nint main(){}" IS_I686)
+		if(IS_I686)
+			target_compile_options(Irrlicht PRIVATE -mfpmath=sse -msse)
+		endif()
+	endif()
+elseif(MSVC)
+	target_compile_options(Irrlicht PRIVATE /GR-)
+
+	# Use SSE for floating point math on 32-bit x86.
+	# See: github.com/minetest/minetest/issues/11810
+	# See: https://gcc.gnu.org/wiki/FloatingPointMath
+	if(CMAKE_SIZEOF_VOID_P EQUAL 4)
+		target_compile_options(Irrlicht PRIVATE /arch:SSE)
+	endif()
 endif()
 
 # Alias target provides submodule compatibility
