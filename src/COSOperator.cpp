@@ -20,7 +20,7 @@
 #endif
 
 #if defined(_IRR_COMPILE_WITH_X11_DEVICE_)
-#include "CIrrDeviceLinux.h"
+#include "video/driver/CIrrDeviceLinux.h"
 #endif
 #if defined(_IRR_COMPILE_WITH_OSX_DEVICE_)
 #import <Cocoa/Cocoa.h>
