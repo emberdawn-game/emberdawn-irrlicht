@@ -12,15 +12,10 @@ endif()
 option(USE_OPENGL "Build OpenGL renderer" ON)
 
 if (USE_OPENGL)
-	set(_IRR_COMPILE_WITH_OPENGL_ ON)
 	list(APPEND VCPKG_MANIFEST_FEATURES opengl)
 endif()
 
 option(USE_OGLES2 "Build OpenGL ES 2 renderer" OFF)
-
-if (USE_OGLES2)
-	set(_IRR_COMPILE_WITH_OGLES2_ ON)
-endif()
 
 project(EmberdawnIrrlicht
 	VERSION 1.9.0
