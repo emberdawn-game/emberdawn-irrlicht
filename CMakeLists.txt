@@ -58,13 +58,13 @@ export(EXPORT EmberdawnIrrlicht-export
 install(EXPORT EmberdawnIrrlicht-export
 	FILE emberdawn-irrlicht-targets.cmake
 	NAMESPACE EmberdawnIrrlicht::
-	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/emberdawn-irrlicht"
+	DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/emberdawn-irrlicht"
 )
 
 include(CMakePackageConfigHelpers)
 configure_package_config_file("${PROJECT_SOURCE_DIR}/Config.cmake.in"
 	"${CMAKE_CURRENT_BINARY_DIR}/cmake/emberdawn-irrlicht-config.cmake"
-	INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/emberdawn-irrlicht"
+	INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/emberdawn-irrlicht"
 	NO_SET_AND_CHECK_MACRO
 	NO_CHECK_REQUIRED_COMPONENTS_MACRO
 )
@@ -76,5 +76,5 @@ write_basic_package_version_file(
 install(FILES
 	"${CMAKE_CURRENT_BINARY_DIR}/cmake/emberdawn-irrlicht-config.cmake"
 	"${CMAKE_CURRENT_BINARY_DIR}/cmake/emberdawn-irrlicht-config-version.cmake"
-	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/emberdawn-irrlicht"
+	DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/emberdawn-irrlicht"
 )
