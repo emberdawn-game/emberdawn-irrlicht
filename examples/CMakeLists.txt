@@ -9,5 +9,7 @@ foreach(exname IN ITEMS ${IRREXAMPLES})
 		${CMAKE_SOURCE_DIR}/include
 		${CMAKE_CURRENT_SOURCE_DIR}/${exname}
 	)
-	target_link_libraries(${exname} PRIVATE EmberdawnIrrlicht)
+	target_link_libraries(${exname}
+		PUBLIC emberdawn-irrlicht-headers
+		PRIVATE EmberdawnIrrlicht)
 endforeach()

@@ -87,7 +87,6 @@ else()
 endif()
 
 set(link_includes
-	"${PROJECT_SOURCE_DIR}/include"
 	"${CMAKE_CURRENT_SOURCE_DIR}"
 
 	"${JPEG_INCLUDE_DIR}"
@@ -270,6 +269,7 @@ foreach(object_lib
 	IRRIOOBJ IRROTHEROBJ IRRGUIOBJ)
 	# Set include directories for object library compilation
 	target_include_directories(${object_lib} PRIVATE ${link_includes})
+	target_link_libraries(${object_lib} PUBLIC emberdawn-irrlicht-headers)
 	# Add objects from object library to main library
 	target_sources(EmberdawnIrrlicht PRIVATE $<TARGET_OBJECTS:${object_lib}>)
 endforeach()
