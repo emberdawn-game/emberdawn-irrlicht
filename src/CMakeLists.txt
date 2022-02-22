@@ -310,6 +310,6 @@ else()
 endif()
 
 install(TARGETS ${INSTALL_TARGETS}
-	EXPORT EmberdawnIrrlicht-export
+	EXPORT emberdawn-irrlicht-export
 	DESTINATION "${CMAKE_INSTALL_LIBDIR}"
 )

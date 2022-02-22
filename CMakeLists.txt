@@ -49,13 +49,13 @@ endif()
 # Export a file that describes the targets that EmberdawnIrrlicht creates.
 # The file is placed in the location FILE points to, where CMake can easily
 # locate it by pointing CMAKE_PREFIX_PATH to this project root.
-export(EXPORT EmberdawnIrrlicht-export
+export(EXPORT emberdawn-irrlicht-export
 	FILE "${CMAKE_CURRENT_BINARY_DIR}/cmake/emberdawn-irrlicht-targets.cmake"
 	NAMESPACE EmberdawnIrrlicht::
 )
 
 # Installation of CMake target and configuration files.
-install(EXPORT EmberdawnIrrlicht-export
+install(EXPORT emberdawn-irrlicht-export
 	FILE emberdawn-irrlicht-targets.cmake
 	NAMESPACE EmberdawnIrrlicht::
 	DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/emberdawn-irrlicht"
