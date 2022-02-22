@@ -286,7 +286,9 @@ target_include_directories(EmberdawnIrrlicht
 		${link_includes}
 )
 
-target_link_libraries(EmberdawnIrrlicht PRIVATE ${link_libs})
+target_link_libraries(EmberdawnIrrlicht
+	PUBLIC emberdawn-irrlicht-headers
+	PRIVATE ${link_libs})
 
 # Propagate static library flag to lib users, only needed for Windows
 if(NOT BUILD_SHARED_LIBS)

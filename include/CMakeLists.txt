@@ -14,6 +14,9 @@ target_include_directories(emberdawn-irrlicht-headers INTERFACE
 	"$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>"
 	"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 
+install(TARGETS emberdawn-irrlicht-headers
+	EXPORT emberdawn-irrlicht-export)
+
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/"
 	DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/emberdawn-irrlicht"
 	FILES_MATCHING PATTERN "*.h")
