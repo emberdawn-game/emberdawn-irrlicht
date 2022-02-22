@@ -17,11 +17,10 @@ endif()
 
 option(USE_OGLES2 "Build OpenGL ES 2 renderer" OFF)
 
-project(emberdawn-irrlicht
-	VERSION 1.9.0
-	LANGUAGES CXX
-)
-set(PROJECT_VERSION_PRERELEASE "dev")
+project(emberdawn-irrlicht VERSION 1.9.0
+	DESCRIPTION "A fork of the Irrlicht 3D engine, specifically for Emberdawn"
+	LANGUAGES CXX)
+SET(PROJECT_VERSION_PRERELEASE "dev")
 
 if(PROJECT_VERSION_PRERELEASE)
 	set(IRRLICHT_VERSION "${PROJECT_VERSION}-${PROJECT_VERSION_PRERELEASE}")
