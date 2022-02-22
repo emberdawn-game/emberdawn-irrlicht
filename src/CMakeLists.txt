@@ -1,11 +1,6 @@
-option(BUILD_SHARED_LIBS "Build shared library" TRUE)
-
 # Compiler flags
 
 add_definitions(-DIRRLICHT_EXPORTS)
-if(NOT BUILD_SHARED_LIBS)
-	add_definitions(-D_IRR_STATIC_LIB_)
-endif()
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 	add_definitions(-D_DEBUG)
 endif()
@@ -289,11 +284,6 @@ target_include_directories(Irrlicht
 target_link_libraries(Irrlicht
 	PUBLIC Include
 	PRIVATE ${link_libs})
-
-# Propagate static library flag to lib users, only needed for Windows
-if(NOT BUILD_SHARED_LIBS)
-	target_compile_definitions(Irrlicht INTERFACE _IRR_STATIC_LIB_)
-endif()
 
 set_target_properties(Irrlicht PROPERTIES
 	VERSION ${PROJECT_VERSION}
