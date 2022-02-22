@@ -1,3 +1,16 @@
+find_package(JPEG REQUIRED)
+find_package(ZLIB REQUIRED)
+find_package(libpng CONFIG REQUIRED)
+
+if(USE_OPENGL)
+	find_package(OpenGL REQUIRED)
+	find_path(OPENGL_REGISTRY_INCLUDE_DIRS GL/glcorearb.h)
+endif()
+
+if(USE_OGLES2)
+	find_package(OpenGLES2 REQUIRED)
+endif()
+
 # Compiler flags
 
 add_definitions(-DIRRLICHT_EXPORTS)
@@ -33,13 +46,6 @@ elseif(MSVC)
 	endif()
 endif()
 
-# Required libs
-
-find_package(ZLIB REQUIRED)
-find_package(JPEG REQUIRED)
-find_package(libpng REQUIRED)
-find_path(OPENGL_REGISTRY_INCLUDE_DIRS "GL/glcorearb.h")
-
 # To configure the features available in this Irrlicht build please edit
 # include/IrrLegacyCompileConfig.h and re-run CMake from a clean state
 include(CheckSymbolExists)
@@ -54,12 +60,6 @@ if(OGLES1_ENABLED)
 	find_library(EGL_LIBRARY NAMES EGL REQUIRED)
 
 	message(STATUS "Found OpenGLES: ${OPENGLES_LIBRARY}")
-endif()
-if(USE_OGLES2)
-	find_package(OpenGLES2 REQUIRED)
-endif()
-if(USE_OPENGL)
-	find_package(OpenGL REQUIRED)
 endif()
 check_symbol_exists(_IRR_LINUX_X11_XINPUT2_ "IrrLegacyCompileConfig.h" XINPUT2_ENABLED)
 if(XINPUT2_ENABLED)
