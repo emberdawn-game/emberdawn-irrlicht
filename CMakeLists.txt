@@ -12,6 +12,8 @@ endif()
 
 option(USE_OGLES2 "Build OpenGL ES 2 renderer" OFF)
 
+option(BUILD_EXAMPLES "Build example applications" FALSE)
+
 project(emberdawn-irrlicht VERSION 1.9.0
 	DESCRIPTION "A fork of the Irrlicht 3D engine, specifically for Emberdawn"
 	LANGUAGES CXX)
@@ -33,7 +35,6 @@ add_subdirectory(include)
 
 add_subdirectory(src)
 
-option(BUILD_EXAMPLES "Build example applications" FALSE)
 if(BUILD_EXAMPLES)
 	add_subdirectory(examples)
 endif()
