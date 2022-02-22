@@ -9,7 +9,10 @@ endif()
 configure_file(IrrCmakeConfigured.h.in "${CMAKE_CURRENT_BINARY_DIR}/IrrCmakeConfigured.h")
 
 add_library(emberdawn-irrlicht-headers INTERFACE)
-target_include_directories(emberdawn-irrlicht-headers INTERFACE . "${CMAKE_CURRENT_BINARY_DIR}")
+target_include_directories(emberdawn-irrlicht-headers INTERFACE
+	"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
+	"$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>"
+	"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/"
 	DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/emberdawn-irrlicht"
