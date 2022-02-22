@@ -272,14 +272,9 @@ endforeach()
 # Alias target provides add_submodule compatibility
 add_library(EmberdawnIrrlicht::Irrlicht ALIAS Irrlicht)
 
-target_include_directories(Irrlicht
-	PUBLIC
-		"$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include/>"
-		"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
-		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/emberdawn-irrlicht>"
-	PRIVATE
-		${link_includes}
-)
+target_include_directories(Irrlicht PRIVATE
+	${CMAKE_CURRENT_SOURCE_DIR}
+	${link_includes})
 
 target_link_libraries(Irrlicht
 	PUBLIC Include
