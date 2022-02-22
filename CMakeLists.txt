@@ -1,9 +1,5 @@
-cmake_minimum_required(VERSION 3.11)
-cmake_policy(VERSION 3.11)
-
-if(${CMAKE_VERSION} VERSION_GREATER_EQUAL 3.15)
-	cmake_policy(SET CMP0091 NEW)
-endif()
+cmake_minimum_required(VERSION 3.16)
+cmake_policy(VERSION 3.16)
 
 if(DEFINED ENV{VCPKG_ROOT} AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
 	set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")

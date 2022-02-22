@@ -115,159 +115,232 @@ set(link_libs
 	${X11_Xxf86vm_LIB}
 )
 
-# Source files
-
-set(IRRMESHLOADER
-	scene/mesh/loader/CB3DMeshFileLoader.cpp
-	scene/mesh/loader/COBJMeshFileLoader.cpp
-	scene/mesh/loader/CXMeshFileLoader.cpp
-)
-
-add_library(IRRMESHOBJ OBJECT
-	scene/mesh/CSkinnedMesh.cpp
-	scene/mesh/CBoneSceneNode.cpp
-	scene/mesh/CMeshSceneNode.cpp
-	scene/mesh/CAnimatedMeshSceneNode.cpp
-	${IRRMESHLOADER}
-)
-
-add_library(IRROBJ OBJECT
-	scene/CBillboardSceneNode.cpp
-	scene/CCameraSceneNode.cpp
-	scene/CDummyTransformationSceneNode.cpp
-	scene/CEmptySceneNode.cpp
-	scene/CMeshManipulator.cpp
-	scene/CSceneCollisionManager.cpp
-	scene/CSceneManager.cpp
-	scene/CMeshCache.cpp
-	scene/CDefaultSceneNodeFactory.cpp
-)
-
-set(IRRDRVROBJ
-	video/driver/CNullDriver.cpp
-	video/driver/COpenGLCacheHandler.cpp
-	video/driver/COpenGLDriver.cpp
-	video/driver/COpenGLShaderMaterialRenderer.cpp
-	video/driver/COpenGLSLMaterialRenderer.cpp
-	video/driver/COpenGLExtensionHandler.cpp
-	video/driver/COGLESDriver.cpp
-	video/driver/COGLESExtensionHandler.cpp
-	video/driver/COGLES2Driver.cpp
-	video/driver/COGLES2ExtensionHandler.cpp
-	video/driver/COGLES2FixedPipelineRenderer.cpp
-	video/driver/COGLES2MaterialRenderer.cpp
-	video/driver/COGLES2Renderer2D.cpp
-	video/driver/CWebGL1Driver.cpp
-	video/driver/CGLXManager.cpp
-	video/driver/CWGLManager.cpp
-	video/driver/CEGLManager.cpp
-)
-
-set(IRRIMAGEOBJ
-	video/image/CColorConverter.cpp
-	video/image/CImage.cpp
-	video/image/CImageLoaderBMP.cpp
-	video/image/CImageLoaderJPG.cpp
-	video/image/CImageLoaderPNG.cpp
-	video/image/CImageLoaderTGA.cpp
-	video/image/CImageWriterJPG.cpp
-	video/image/CImageWriterPNG.cpp
-)
-
-add_library(IRRVIDEOOBJ OBJECT
-	video/driver/CVideoModeList.cpp
-	video/CFPSCounter.cpp
-	${IRRDRVROBJ}
-	${IRRIMAGEOBJ}
-)
-
-add_library(IRRIOOBJ OBJECT
-	io/CFileList.cpp
-	io/CFileSystem.cpp
-	io/CLimitReadFile.cpp
-	io/CMemoryFile.cpp
-	io/CReadFile.cpp
-	io/CWriteFile.cpp
-	io/CZipReader.cpp
-	io/CMountPointReader.cpp
+add_library(Irrlicht SHARED
+	gui/BuiltInFont.h
+	gui/CDefaultGUIElementFactory.cpp
+	gui/CDefaultGUIElementFactory.h
+	gui/CGUIButton.cpp
+	gui/CGUIButton.h
+	gui/CGUICheckBox.cpp
+	gui/CGUICheckBox.h
+	gui/CGUIColorSelectDialog.cpp
+	gui/CGUIColorSelectDialog.h
+	gui/CGUIComboBox.cpp
+	gui/CGUIComboBox.h
+	gui/CGUIContextMenu.cpp
+	gui/CGUIContextMenu.h
+	gui/CGUIEditBox.cpp
+	gui/CGUIEditBox.h
+	gui/CGUIEnvironment.cpp
+	gui/CGUIEnvironment.h
+	gui/CGUIFileOpenDialog.cpp
+	gui/CGUIFileOpenDialog.h
+	gui/CGUIFont.cpp
+	gui/CGUIFont.h
+	gui/CGUIImage.cpp
+	gui/CGUIImage.h
+	gui/CGUIImageList.cpp
+	gui/CGUIImageList.h
+	gui/CGUIInOutFader.cpp
+	gui/CGUIInOutFader.h
+	gui/CGUIListBox.cpp
+	gui/CGUIListBox.h
+	gui/CGUIMenu.cpp
+	gui/CGUIMenu.h
+	gui/CGUIMeshViewer.cpp
+	gui/CGUIMeshViewer.h
+	gui/CGUIMessageBox.cpp
+	gui/CGUIMessageBox.h
+	gui/CGUIModalScreen.cpp
+	gui/CGUIModalScreen.h
+	gui/CGUIProfiler.cpp
+	gui/CGUIProfiler.h
+	gui/CGUIScrollBar.cpp
+	gui/CGUIScrollBar.h
+	gui/CGUISkin.cpp
+	gui/CGUISkin.h
+	gui/CGUISpinBox.cpp
+	gui/CGUISpinBox.h
+	gui/CGUISpriteBank.cpp
+	gui/CGUISpriteBank.h
+	gui/CGUIStaticText.cpp
+	gui/CGUIStaticText.h
+	gui/CGUITabControl.cpp
+	gui/CGUITabControl.h
+	gui/CGUITable.cpp
+	gui/CGUITable.h
+	gui/CGUIToolBar.cpp
+	gui/CGUIToolBar.h
+	gui/CGUITreeView.cpp
+	gui/CGUITreeView.h
+	gui/CGUIWindow.cpp
+	gui/CGUIWindow.h
+	io/CAttributeImpl.h
 	io/CAttributes.cpp
-)
-
-add_library(IRROTHEROBJ OBJECT
-	video/driver/CIrrDeviceSDL.cpp
-	video/driver/CIrrDeviceLinux.cpp
+	io/CAttributes.h
+	io/CFileList.cpp
+	io/CFileList.h
+	io/CFileSystem.cpp
+	io/CFileSystem.h
+	io/CLimitReadFile.cpp
+	io/CLimitReadFile.h
+	io/CMemoryFile.cpp
+	io/CMemoryFile.h
+	io/CMountPointReader.cpp
+	io/CMountPointReader.h
+	io/CReadFile.cpp
+	io/CReadFile.h
+	io/CWriteFile.cpp
+	io/CWriteFile.h
+	io/CZipReader.cpp
+	io/CZipReader.h
+	io/IAttribute.h
+	scene/CBillboardSceneNode.cpp
+	scene/CBillboardSceneNode.h
+	scene/CCameraSceneNode.cpp
+	scene/CCameraSceneNode.h
+	scene/CDefaultSceneNodeFactory.cpp
+	scene/CDefaultSceneNodeFactory.h
+	scene/CDummyTransformationSceneNode.cpp
+	scene/CDummyTransformationSceneNode.h
+	scene/CEmptySceneNode.cpp
+	scene/CEmptySceneNode.h
+	scene/CMeshCache.cpp
+	scene/CMeshCache.h
+	scene/CMeshManipulator.cpp
+	scene/CMeshManipulator.h
+	scene/CSceneCollisionManager.cpp
+	scene/CSceneCollisionManager.h
+	scene/CSceneManager.cpp
+	scene/CSceneManager.h
+	scene/mesh/CAnimatedMeshSceneNode.cpp
+	scene/mesh/CAnimatedMeshSceneNode.h
+	scene/mesh/CBoneSceneNode.cpp
+	scene/mesh/CBoneSceneNode.h
+	scene/mesh/CMeshSceneNode.cpp
+	scene/mesh/CMeshSceneNode.h
+	scene/mesh/CSkinnedMesh.cpp
+	scene/mesh/CSkinnedMesh.h
+	scene/mesh/loader/CB3DMeshFileLoader.cpp
+	scene/mesh/loader/CB3DMeshFileLoader.h
+	scene/mesh/loader/COBJMeshFileLoader.cpp
+	scene/mesh/loader/COBJMeshFileLoader.h
+	scene/mesh/loader/CXMeshFileLoader.cpp
+	scene/mesh/loader/CXMeshFileLoader.h
+	scene/mesh/loader/SB3DStructs.h
+	video/CFPSCounter.cpp
+	video/CFPSCounter.h
+	video/driver/CEGLManager.cpp
+	video/driver/CEGLManager.h
+	video/driver/CGLXManager.cpp
+	video/driver/CGLXManager.h
 	video/driver/CIrrDeviceConsole.cpp
-	video/driver/CIrrDeviceStub.cpp
-	video/driver/CIrrDeviceWin32.cpp
+	video/driver/CIrrDeviceConsole.h
 	video/driver/CIrrDeviceFB.cpp
+	video/driver/CIrrDeviceFB.h
+	video/driver/CIrrDeviceLinux.cpp
+	video/driver/CIrrDeviceLinux.h
+	video/driver/CIrrDeviceSDL.cpp
+	video/driver/CIrrDeviceSDL.h
+	video/driver/CIrrDeviceStub.cpp
+	video/driver/CIrrDeviceStub.h
+	video/driver/CIrrDeviceWin32.cpp
+	video/driver/CIrrDeviceWin32.h
+	video/driver/CNullDriver.cpp
+	video/driver/CNullDriver.h
+	video/driver/COGLES2Common.h
+	video/driver/COGLES2Driver.cpp
+	video/driver/COGLES2Driver.h
+	video/driver/COGLES2ExtensionHandler.cpp
+	video/driver/COGLES2ExtensionHandler.h
+	video/driver/COGLES2FixedPipelineRenderer.cpp
+	video/driver/COGLES2FixedPipelineRenderer.h
+	video/driver/COGLES2MaterialRenderer.cpp
+	video/driver/COGLES2MaterialRenderer.h
+	video/driver/COGLES2Renderer2D.cpp
+	video/driver/COGLES2Renderer2D.h
+	video/driver/COGLESCommon.h
+	video/driver/COGLESCoreExtensionHandler.h
+	video/driver/COGLESDriver.cpp
+	video/driver/COGLESDriver.h
+	video/driver/COGLESExtensionHandler.cpp
+	video/driver/COGLESExtensionHandler.h
+	video/driver/COGLESMaterialRenderer.h
+	video/driver/COpenGLCacheHandler.cpp
+	video/driver/COpenGLCacheHandler.h
+	video/driver/COpenGLCommon.h
+	video/driver/COpenGLCoreCacheHandler.h
+	video/driver/COpenGLCoreFeature.h
+	video/driver/COpenGLCoreRenderTarget.h
+	video/driver/COpenGLCoreTexture.h
+	video/driver/COpenGLDriver.cpp
+	video/driver/COpenGLDriver.h
+	video/driver/COpenGLExtensionHandler.cpp
+	video/driver/COpenGLExtensionHandler.h
+	video/driver/COpenGLMaterialRenderer.h
+	video/driver/COpenGLShaderMaterialRenderer.cpp
+	video/driver/COpenGLShaderMaterialRenderer.h
+	video/driver/COpenGLSLMaterialRenderer.cpp
+	video/driver/COpenGLSLMaterialRenderer.h
+	video/driver/CVideoModeList.cpp
+	video/driver/CVideoModeList.h
+	video/driver/CWebGL1Driver.cpp
+	video/driver/CWebGL1Driver.h
+	video/driver/CWebGLExtensionHandler.h
+	video/driver/CWGLManager.cpp
+	video/driver/CWGLManager.h
+	video/driver/IImagePresenter.h
+	video/image/CBlit.h
+	video/image/CColorConverter.cpp
+	video/image/CColorConverter.h
+	video/image/CImage.cpp
+	video/image/CImage.h
+	video/image/CImageLoaderBMP.cpp
+	video/image/CImageLoaderBMP.h
+	video/image/CImageLoaderJPG.cpp
+	video/image/CImageLoaderJPG.h
+	video/image/CImageLoaderPNG.cpp
+	video/image/CImageLoaderPNG.h
+	video/image/CImageLoaderTGA.cpp
+	video/image/CImageLoaderTGA.h
+	video/image/CImageWriterJPG.cpp
+	video/image/CImageWriterJPG.h
+	video/image/CImageWriterPNG.cpp
+	video/image/CImageWriterPNG.h
 	CLogger.cpp
 	COSOperator.cpp
-	Irrlicht.cpp
-	os.cpp
-	leakHunter.cpp
 	CProfiler.cpp
-)
+	Irrlicht.cpp
+	leakHunter.cpp
+	os.cpp
+	CLogger.h
+	COSOperator.h
+	CProfiler.h
+	CTimer.h
+	EProfileIDs.h
+	os.h
+	resource.h
+	SoftwareDriver2_compile_config.h
+	SoftwareDriver2_helper.h)
 
 if(ANDROID)
-	target_sources(IRROTHEROBJ PRIVATE
-		Android/CIrrDeviceAndroid.cpp
-		Android/CAndroidAssetReader.cpp
+	target_sources(Irrlicht PRIVATE
 		Android/CAndroidAssetFileArchive.cpp
+		Android/CAndroidAssetFileArchive.h
+		Android/CAndroidAssetReader.cpp
+		Android/CAndroidAssetReader.h
+		Android/CIrrDeviceAndroid.cpp
+		Android/CIrrDeviceAndroid.h
 		Android/CKeyEventWrapper.cpp
-	)
+		Android/CKeyEventWrapper.h)
 elseif(APPLE)
-	# Build all IRROTHEROBJ sources as objc++, including the .cpp's
-	set_target_properties(IRROTHEROBJ PROPERTIES COMPILE_OPTIONS "-xobjective-c++")
-	target_sources(IRROTHEROBJ PRIVATE
+	enable_language(OBJCXX)
+	target_sources(Irrlicht PRIVATE
 		video/driver/CIrrDeviceOSX.mm
+		video/driver/CIrrDeviceOSX.h
 		video/driver/CNSOGLManager.mm
-	)
+		video/driver/CNSOGLManager.h)
 endif()
-
-add_library(IRRGUIOBJ OBJECT
-	gui/CGUIButton.cpp
-	gui/CGUICheckBox.cpp
-	gui/CGUIComboBox.cpp
-	gui/CGUIContextMenu.cpp
-	gui/CGUIEditBox.cpp
-	gui/CGUIEnvironment.cpp
-	gui/CGUIFileOpenDialog.cpp
-	gui/CGUIFont.cpp
-	gui/CGUIImage.cpp
-	gui/CGUIInOutFader.cpp
-	gui/CGUIListBox.cpp
-	gui/CGUIMenu.cpp
-	gui/CGUIMeshViewer.cpp
-	gui/CGUIMessageBox.cpp
-	gui/CGUIModalScreen.cpp
-	gui/CGUIScrollBar.cpp
-	gui/CGUISpinBox.cpp
-	gui/CGUISkin.cpp
-	gui/CGUIStaticText.cpp
-	gui/CGUITabControl.cpp
-	gui/CGUITable.cpp
-	gui/CGUIToolBar.cpp
-	gui/CGUIWindow.cpp
-	gui/CGUIColorSelectDialog.cpp
-	gui/CDefaultGUIElementFactory.cpp
-	gui/CGUISpriteBank.cpp
-	gui/CGUIImageList.cpp
-	gui/CGUITreeView.cpp
-	gui/CGUIProfiler.cpp
-)
-
-# Library
-
-add_library(Irrlicht)
-foreach(object_lib
-	IRRMESHOBJ IRROBJ IRRVIDEOOBJ
-	IRRIOOBJ IRROTHEROBJ IRRGUIOBJ)
-	# Set include directories for object library compilation
-	target_include_directories(${object_lib} PRIVATE ${link_includes})
-	target_link_libraries(${object_lib} PUBLIC Include)
-	# Add objects from object library to main library
-	target_sources(Irrlicht PRIVATE $<TARGET_OBJECTS:${object_lib}>)
-endforeach()
 
 # Alias target provides add_submodule compatibility
 add_library(EmberdawnIrrlicht::Irrlicht ALIAS Irrlicht)
