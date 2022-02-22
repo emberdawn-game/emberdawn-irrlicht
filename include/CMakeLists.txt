@@ -1,8 +1,8 @@
-if (USE_OPENGL)
+if(USE_OPENGL)
 	set(_IRR_COMPILE_WITH_OPENGL_ ON)
 endif()
 
-if (USE_OGLES2)
+if(USE_OGLES2)
 	set(_IRR_COMPILE_WITH_OGLES2_ ON)
 endif()
 
