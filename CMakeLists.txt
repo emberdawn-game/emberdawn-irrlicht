@@ -17,7 +17,7 @@ endif()
 
 option(USE_OGLES2 "Build OpenGL ES 2 renderer" OFF)
 
-project(EmberdawnIrrlicht
+project(emberdawn-irrlicht
 	VERSION 1.9.0
 	LANGUAGES CXX
 )
@@ -46,7 +46,7 @@ if(BUILD_EXAMPLES)
 	add_subdirectory(examples)
 endif()
 
-# Export a file that describes the targets that EmberdawnIrrlicht creates.
+# Export a file that describes the targets that emberdawn-irrlicht creates.
 # The file is placed in the location FILE points to, where CMake can easily
 # locate it by pointing CMAKE_PREFIX_PATH to this project root.
 export(EXPORT emberdawn-irrlicht-export
