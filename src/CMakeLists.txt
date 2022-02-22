@@ -269,7 +269,7 @@ foreach(object_lib
 	IRRIOOBJ IRROTHEROBJ IRRGUIOBJ)
 	# Set include directories for object library compilation
 	target_include_directories(${object_lib} PRIVATE ${link_includes})
-	target_link_libraries(${object_lib} PUBLIC emberdawn-irrlicht-headers)
+	target_link_libraries(${object_lib} PUBLIC Include)
 	# Add objects from object library to main library
 	target_sources(EmberdawnIrrlicht PRIVATE $<TARGET_OBJECTS:${object_lib}>)
 endforeach()
@@ -287,7 +287,7 @@ target_include_directories(EmberdawnIrrlicht
 )
 
 target_link_libraries(EmberdawnIrrlicht
-	PUBLIC emberdawn-irrlicht-headers
+	PUBLIC Include
 	PRIVATE ${link_libs})
 
 # Propagate static library flag to lib users, only needed for Windows
