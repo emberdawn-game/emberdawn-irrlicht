@@ -263,7 +263,7 @@ add_library(IRRGUIOBJ OBJECT
 
 # Library
 
-add_library(EmberdawnIrrlicht)
+add_library(Irrlicht)
 foreach(object_lib
 	IRRMESHOBJ IRROBJ IRRVIDEOOBJ
 	IRRIOOBJ IRROTHEROBJ IRRGUIOBJ)
@@ -271,13 +271,13 @@ foreach(object_lib
 	target_include_directories(${object_lib} PRIVATE ${link_includes})
 	target_link_libraries(${object_lib} PUBLIC Include)
 	# Add objects from object library to main library
-	target_sources(EmberdawnIrrlicht PRIVATE $<TARGET_OBJECTS:${object_lib}>)
+	target_sources(Irrlicht PRIVATE $<TARGET_OBJECTS:${object_lib}>)
 endforeach()
 
 # Alias target provides add_submodule compatibility
-add_library(EmberdawnIrrlicht::EmberdawnIrrlicht ALIAS EmberdawnIrrlicht)
+add_library(EmberdawnIrrlicht::Irrlicht ALIAS Irrlicht)
 
-target_include_directories(EmberdawnIrrlicht
+target_include_directories(Irrlicht
 	PUBLIC
 		"$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include/>"
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
@@ -286,29 +286,29 @@ target_include_directories(EmberdawnIrrlicht
 		${link_includes}
 )
 
-target_link_libraries(EmberdawnIrrlicht
+target_link_libraries(Irrlicht
 	PUBLIC Include
 	PRIVATE ${link_libs})
 
 # Propagate static library flag to lib users, only needed for Windows
 if(NOT BUILD_SHARED_LIBS)
-	target_compile_definitions(EmberdawnIrrlicht INTERFACE _IRR_STATIC_LIB_)
+	target_compile_definitions(Irrlicht INTERFACE _IRR_STATIC_LIB_)
 endif()
 
-set_target_properties(EmberdawnIrrlicht PROPERTIES
+set_target_properties(Irrlicht PROPERTIES
 	VERSION ${PROJECT_VERSION}
 	SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
 )
 
 if(WIN32)
-	set_target_properties(EmberdawnIrrlicht PROPERTIES PREFIX "") # for DLL name
+	set_target_properties(Irrlicht PROPERTIES PREFIX "") # for DLL name
 endif()
 
 # Installation of library
 if(ANDROID)
-	set(INSTALL_TARGETS EmberdawnIrrlicht native_app_glue)
+	set(INSTALL_TARGETS Irrlicht native_app_glue)
 else()
-	set(INSTALL_TARGETS EmberdawnIrrlicht)
+	set(INSTALL_TARGETS Irrlicht)
 endif()
 
 install(TARGETS ${INSTALL_TARGETS}
