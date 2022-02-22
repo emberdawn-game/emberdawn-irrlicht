@@ -340,6 +340,8 @@ elseif(APPLE)
 		video/driver/CIrrDeviceOSX.h
 		video/driver/CNSOGLManager.mm
 		video/driver/CNSOGLManager.h)
+	set_source_files_properties(Irrlicht.cpp COSOperator.cpp PROPERTIES
+		COMPILE_OPTIONS -xobjective-c++)
 endif()
 
 # Alias target provides add_submodule compatibility
