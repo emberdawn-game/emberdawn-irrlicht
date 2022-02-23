@@ -358,14 +358,8 @@ endif()
 # Alias target provides submodule compatibility
 add_library(EmberdawnIrrlicht::Irrlicht ALIAS Irrlicht)
 
-# Installation of library
-if(ANDROID)
-	set(INSTALL_TARGETS Irrlicht native_app_glue)
-else()
-	set(INSTALL_TARGETS Irrlicht)
-endif()
+install(TARGETS Irrlicht EXPORT emberdawn-irrlicht-export)
 
-install(TARGETS ${INSTALL_TARGETS}
-	EXPORT emberdawn-irrlicht-export
-	DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-)
+if(ANDROID)
+	install(TARGETS native_app_glue EXPORT emberdawn-irrlicht-export)
+endif()
