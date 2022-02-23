@@ -82,39 +82,6 @@ else()
 	find_package(X11 REQUIRED)
 endif()
 
-set(link_includes
-	"${CMAKE_CURRENT_SOURCE_DIR}"
-
-	"${JPEG_INCLUDE_DIR}"
-
-	${OPENGL_INCLUDE_DIR}
-	${OPENGL_REGISTRY_INCLUDE_DIRS}
-	${OPENGLES2_INCLUDE_DIR}
-	${EGL_INCLUDE_DIR}
-
-	${X11_INCLUDE_DIR}
-)
-
-set(link_libs
-	"ZLIB::ZLIB"
-	"${JPEG_LIBRARIES}"
-	"$<IF:$<TARGET_EXISTS:png>,png,png_static>"
-
-	${OPENGL_LIBRARIES}
-	${OPENGLES_LIBRARY}
-	${OPENGLES2_LIBRARIES}
-	${EGL_LIBRARY}
-	${XINPUT_LIBRARY}
-
-	$<$<PLATFORM_ID:Android>:NativeAppGlue>
-	$<$<PLATFORM_ID:Android>:android>
-	$<$<PLATFORM_ID:Android>:log>
-	${COCOA_LIB}
-	${IOKIT_LIB}
-	${X11_X11_LIB}
-	${X11_Xxf86vm_LIB}
-)
-
 add_library(Irrlicht SHARED
 	gui/BuiltInFont.h
 	gui/CDefaultGUIElementFactory.cpp
@@ -323,11 +290,31 @@ add_library(Irrlicht SHARED
 	SoftwareDriver2_compile_config.h
 	SoftwareDriver2_helper.h)
 target_include_directories(Irrlicht PRIVATE
-	${CMAKE_CURRENT_SOURCE_DIR}
-	${link_includes})
+	"${CMAKE_CURRENT_SOURCE_DIR}"
+	"${JPEG_INCLUDE_DIR}"
+	"${OPENGL_INCLUDE_DIR}"
+	"${OPENGL_REGISTRY_INCLUDE_DIRS}"
+	"${OPENGLES2_INCLUDE_DIR}"
+	"${EGL_INCLUDE_DIR}"
+	"${X11_INCLUDE_DIR}")
 target_link_libraries(Irrlicht
 	PUBLIC Include
-	PRIVATE ${link_libs})
+	PRIVATE
+		ZLIB::ZLIB
+		${JPEG_LIBRARIES}
+		$<IF:$<TARGET_EXISTS:png>,png,png_static>
+		${OPENGL_LIBRARIES}
+		${OPENGLES_LIBRARY}
+		${OPENGLES2_LIBRARIES}
+		${EGL_LIBRARY}
+		${XINPUT_LIBRARY}
+		$<$<PLATFORM_ID:Android>:NativeAppGlue>
+		$<$<PLATFORM_ID:Android>:android>
+		$<$<PLATFORM_ID:Android>:log>
+		${COCOA_LIB}
+		${IOKIT_LIB}
+		${X11_X11_LIB}
+		${X11_Xxf86vm_LIB})
 set_target_properties(Irrlicht PROPERTIES
 	VERSION ${PROJECT_VERSION}
 	SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
