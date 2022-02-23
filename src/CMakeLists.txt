@@ -355,7 +355,7 @@ elseif(WIN32)
 	set_target_properties(Irrlicht PROPERTIES PREFIX "") # for DLL name
 endif()
 
-# Alias target provides add_submodule compatibility
+# Alias target provides submodule compatibility
 add_library(EmberdawnIrrlicht::Irrlicht ALIAS Irrlicht)
 
 # Installation of library
