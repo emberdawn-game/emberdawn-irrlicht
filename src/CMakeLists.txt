@@ -71,6 +71,7 @@ endif()
 if(ANDROID)
 	enable_language(C)
 	add_library(NativeAppGlue STATIC "${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c")
+	target_include_directories(NativeAppGlue PUBLIC "${ANDROID_NDK}/sources/android/native_app_glue/")
 elseif(APPLE)
 	find_library(COCOA_LIB Cocoa REQUIRED)
 	find_library(IOKIT_LIB IOKit REQUIRED)
@@ -91,7 +92,6 @@ set(link_includes
 	${OPENGLES2_INCLUDE_DIR}
 	${EGL_INCLUDE_DIR}
 
-	"$<$<PLATFORM_ID:Android>:${ANDROID_NDK}/sources/android/native_app_glue>"
 	${X11_INCLUDE_DIR}
 )
 
