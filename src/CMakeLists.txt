@@ -58,8 +58,6 @@ if(OGLES1_ENABLED)
 	# only tested on Android, probably works on Linux (is this needed anywhere else?)
 	find_library(OPENGLES_LIBRARY NAMES GLESv1_CM REQUIRED)
 	find_library(EGL_LIBRARY NAMES EGL REQUIRED)
-
-	message(STATUS "Found OpenGLES: ${OPENGLES_LIBRARY}")
 endif()
 check_symbol_exists(_IRR_LINUX_X11_XINPUT2_ "IrrLegacyCompileConfig.h" XINPUT2_ENABLED)
 if(XINPUT2_ENABLED)
