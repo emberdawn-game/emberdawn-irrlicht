@@ -322,6 +322,15 @@ add_library(Irrlicht SHARED
 	resource.h
 	SoftwareDriver2_compile_config.h
 	SoftwareDriver2_helper.h)
+target_include_directories(Irrlicht PRIVATE
+	${CMAKE_CURRENT_SOURCE_DIR}
+	${link_includes})
+target_link_libraries(Irrlicht
+	PUBLIC Include
+	PRIVATE ${link_libs})
+set_target_properties(Irrlicht PROPERTIES
+	VERSION ${PROJECT_VERSION}
+	SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
 
 if(ANDROID)
 	target_sources(Irrlicht PRIVATE
@@ -342,27 +351,12 @@ elseif(APPLE)
 		video/driver/CNSOGLManager.h)
 	set_source_files_properties(Irrlicht.cpp COSOperator.cpp PROPERTIES
 		COMPILE_OPTIONS -xobjective-c++)
+elseif(WIN32)
+	set_target_properties(Irrlicht PROPERTIES PREFIX "") # for DLL name
 endif()
 
 # Alias target provides add_submodule compatibility
 add_library(EmberdawnIrrlicht::Irrlicht ALIAS Irrlicht)
-
-target_include_directories(Irrlicht PRIVATE
-	${CMAKE_CURRENT_SOURCE_DIR}
-	${link_includes})
-
-target_link_libraries(Irrlicht
-	PUBLIC Include
-	PRIVATE ${link_libs})
-
-set_target_properties(Irrlicht PROPERTIES
-	VERSION ${PROJECT_VERSION}
-	SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-)
-
-if(WIN32)
-	set_target_properties(Irrlicht PROPERTIES PREFIX "") # for DLL name
-endif()
 
 # Installation of library
 if(ANDROID)
