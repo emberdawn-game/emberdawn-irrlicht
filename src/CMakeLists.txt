@@ -11,30 +11,6 @@ if(USE_OGLES2)
 	find_package(OpenGLES2 REQUIRED)
 endif()
 
-if(CMAKE_CXX_COMPILER_ID MATCHES "^(GNU|Clang|AppleClang)$")
-	add_compile_options(-Wall -pipe -fno-exceptions -fno-rtti)
-
-	# Enable SSE for floating point math on 32-bit x86 by default
-	# reasoning see minetest issue #11810 and https://gcc.gnu.org/wiki/FloatingPointMath
-	if(CMAKE_SIZEOF_VOID_P EQUAL 4)
-		include(CheckCXXSourceCompiles)
-		check_cxx_source_compiles("#ifndef __i686__\n#error\n#endif\nint main(){}" IS_I686)
-		if(IS_I686)
-			message(STATUS "Detected Intel x86: using SSE instead of x87 FPU")
-			add_compile_options(-mfpmath=sse -msse)
-		endif()
-	endif()
-
-elseif(MSVC)
-	add_compile_options(/GR-)
-
-	# Enable SSE for floating point math on 32-bit x86 by default
-	# reasoning see minetest issue #11810 and https://gcc.gnu.org/wiki/FloatingPointMath
-	if(CMAKE_SIZEOF_VOID_P EQUAL 4)
-		add_compile_options(/arch:SSE)
-	endif()
-endif()
-
 # To configure the features available in this Irrlicht build please edit
 # include/IrrLegacyCompileConfig.h and re-run CMake from a clean state
 include(CheckSymbolExists)
@@ -327,6 +303,29 @@ elseif(APPLE)
 		COMPILE_OPTIONS -xobjective-c++)
 elseif(WIN32)
 	set_target_properties(Irrlicht PROPERTIES PREFIX "") # for DLL name
+endif()
+
+if(CMAKE_CXX_COMPILER_ID MATCHES "^(GNU|Clang|AppleClang)$")
+	target_compile_options(Irrlicht PRIVATE -Wall -pipe -fno-exceptions -fno-rtti)
+	# Use SSE for floating point math on 32-bit x86.
+	# See: github.com/minetest/minetest/issues/11810
+	# See: https://gcc.gnu.org/wiki/FloatingPointMath
+	if(CMAKE_SIZEOF_VOID_P EQUAL 4)
+		include(CheckCXXSourceCompiles)
+		check_cxx_source_compiles("#ifndef __i686__\n#error\n#endif\nint main(){}" IS_I686)
+		if(IS_I686)
+			target_compile_options(Irrlicht PRIVATE -mfpmath=sse -msse)
+		endif()
+	endif()
+elseif(MSVC)
+	target_compile_options(Irrlicht PRIVATE /GR-)
+
+	# Use SSE for floating point math on 32-bit x86.
+	# See: github.com/minetest/minetest/issues/11810
+	# See: https://gcc.gnu.org/wiki/FloatingPointMath
+	if(CMAKE_SIZEOF_VOID_P EQUAL 4)
+		target_compile_options(Irrlicht PRIVATE /arch:SSE)
+	endif()
 endif()
 
 # Alias target provides submodule compatibility
