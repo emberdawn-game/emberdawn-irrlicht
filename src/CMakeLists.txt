@@ -70,7 +70,7 @@ endif()
 
 if(ANDROID)
 	enable_language(C)
-	add_library(NativeAppGlue STATIC ${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c)
+	add_library(NativeAppGlue STATIC "${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c")
 elseif(APPLE)
 	find_library(COCOA_LIB Cocoa REQUIRED)
 	find_library(IOKIT_LIB IOKit REQUIRED)
@@ -106,7 +106,7 @@ set(link_libs
 	${EGL_LIBRARY}
 	${XINPUT_LIBRARY}
 
-	"$<$<PLATFORM_ID:Android>:native_app_glue -landroid -llog>"
+	"$<$<PLATFORM_ID:Android>:NativeAppGlue -landroid -llog>"
 	${COCOA_LIB}
 	${IOKIT_LIB}
 	"$<$<PLATFORM_ID:Windows>:gdi32>"
