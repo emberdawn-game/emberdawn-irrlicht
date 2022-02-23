@@ -106,7 +106,9 @@ set(link_libs
 	${EGL_LIBRARY}
 	${XINPUT_LIBRARY}
 
-	"$<$<PLATFORM_ID:Android>:NativeAppGlue -landroid -llog>"
+	$<$<PLATFORM_ID:Android>:NativeAppGlue>
+	$<$<PLATFORM_ID:Android>:android>
+	$<$<PLATFORM_ID:Android>:log>
 	${COCOA_LIB}
 	${IOKIT_LIB}
 	"$<$<PLATFORM_ID:Windows>:gdi32>"
