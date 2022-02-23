@@ -11,10 +11,6 @@ if(USE_OGLES2)
 	find_package(OpenGLES2 REQUIRED)
 endif()
 
-add_definitions(-DIRRLICHT_EXPORTS)
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-	add_definitions(-D_DEBUG)
-endif()
 set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "^(GNU|Clang|AppleClang)$")
@@ -283,6 +279,7 @@ add_library(Irrlicht SHARED
 	resource.h
 	SoftwareDriver2_compile_config.h
 	SoftwareDriver2_helper.h)
+target_compile_definitions(Irrlicht PRIVATE IRRLICHT_EXPORTS $<$<CONFIG:Debug>:_DEBUG>)
 target_include_directories(Irrlicht PRIVATE
 	"${CMAKE_CURRENT_SOURCE_DIR}"
 	"${JPEG_INCLUDE_DIR}"
