@@ -11,8 +11,6 @@ if(USE_OGLES2)
 	find_package(OpenGLES2 REQUIRED)
 endif()
 
-# Compiler flags
-
 add_definitions(-DIRRLICHT_EXPORTS)
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 	add_definitions(-D_DEBUG)
@@ -63,8 +61,6 @@ check_symbol_exists(_IRR_LINUX_X11_XINPUT2_ "IrrLegacyCompileConfig.h" XINPUT2_E
 if(XINPUT2_ENABLED)
 	find_library(XINPUT_LIBRARY Xi REQUIRED)
 endif()
-
-# Platform-specific libs
 
 if(ANDROID)
 	enable_language(C)
