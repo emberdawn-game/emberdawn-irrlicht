@@ -17,7 +17,7 @@ option(BUILD_EXAMPLES "Build example applications" FALSE)
 project(emberdawn-irrlicht VERSION 1.9.0
 	DESCRIPTION "A fork of the Irrlicht 3D engine, specifically for Emberdawn"
 	LANGUAGES CXX)
-SET(PROJECT_VERSION_PRERELEASE "dev")
+SET(PROJECT_VERSION_PRERELEASE "alpha.4")
 
 if(PROJECT_VERSION_PRERELEASE)
 	set(PROJECT_VERSION "${PROJECT_VERSION}-${PROJECT_VERSION_PRERELEASE}")
