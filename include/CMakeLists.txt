@@ -12,7 +12,7 @@ add_library(Include INTERFACE)
 target_include_directories(Include INTERFACE
 	"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
 	"$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>"
-	"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
+	"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/emberdawn-irrlicht>")
 
 install(TARGETS Include EXPORT emberdawn-irrlicht-export)
 
