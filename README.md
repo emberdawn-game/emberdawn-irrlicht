@@ -1,67 +1,63 @@
-EmberdawnIrrlicht version 1.9
-=============================
+# EmberdawnIrrlicht version 1.9
 
 The Irrlicht Engine is an open source realtime 3D engine written in C++.
 
 This is a fork by the [Emberdawn](https://github.com/emberdawn-game) developers that contains features, customizations and fixes specifically for use in Emberdawn. Based on IrrlichtMt by the [Minetest](https://github.com/minetest) team.
 
-Build
------
+## Build
 
-The build system is CMake.
+The build system is CMake, and vcpkg is used to manage dependencies.
 
-The following libraries are required to be installed:
-* zlib, libPNG, libJPEG
-* OpenGL
-  * or on mobile: OpenGL ES (can be optionally enabled on desktop too)
-* on Unix: X11
+We recommend you set the environment variable `VCPKG_ROOT` to the path where vcpkg is installed. In this case the build system will find and use vcpkg automatically.
 
-Aside from standard search options (`ZLIB_INCLUDE_DIR`, `ZLIB_LIBRARY`, ...) the following options are available:
-* `BUILD_SHARED_LIBS` (default: `ON`) - Build EmberdawnIrrlicht as a shared library
-* `BUILD_EXAMPLES` (default: `OFF`) - Build example applications
+Otherwise, you will need to set the CMake variable `CMAKE_TOOLCHAIN_FILE` to point to the CMake toolchain file provided by vcpkg. For example, `cmake . -DCMAKE_TOOLCHAIN_FILE=/path/to/vcpkg/scripts/buildsystems/vcpkg.cmake`.
 
-e.g. on a Linux system you might want to build for local use like this:
+Most dependencies will be downloaded and built automatically by vcpkg. The following dependencies must be provided by the system:
 
-	git clone https://github.com/minetest/irrlicht
-	cd irrlicht
-	cmake . -DBUILD_SHARED_LIBS=OFF
-	make -j$(nproc)
+ * OpenGL or OpenGL ES
+ * On Unix: X11
 
-This will put an emberdawn-irrlicht-targets.cmake file into the cmake directory in the current build directory, and it can then be imported from another project by pointing `find_package()` to the build directory, or by setting the `CMAKE_PREFIX_PATH` variable to that same path.
+On Windows OpenGL headers and libraries are bundled with Visual Studio.
 
-Platforms
----------
+On a Linux system you might build like this:
 
-We aim to support these platforms:
-* Windows via MinGW
-* Linux (GL or GLES)
-* macOS
-* Android
+```bash
+git clone git@github.com:emberdawn-game/emberdawn-irrlicht
+cd emberdawn-irrlicht
+cmake .
+make
+```
 
-This doesn't mean other platforms don't work or won't be supported, if you find something that doesn't work contributions are welcome.
+## Platforms
 
-License
--------
+The following platforms are officially supported:
+
+ * Windows (compiling with MSVC)
+ * Linux/X11 (compiling with gcc or clang)
+ * macOS (compiling with clang)
+
+Other platforms or compilers may work too, and if not we accept patches.
+
+## License
 
 The license of the Irrlicht Engine is based on the zlib/libpng license and applies to this fork, too.
 
-	The Irrlicht Engine License
-	===========================
-
-	Copyright (C) 2002-2012 Nikolaus Gebhardt
-
-	This software is provided 'as-is', without any express or implied
-	warranty.  In no event will the authors be held liable for any damages
-	arising from the use of this software.
-
-	Permission is granted to anyone to use this software for any purpose,
-	including commercial applications, and to alter it and redistribute it
-	freely, subject to the following restrictions:
-
-	1. The origin of this software must not be misrepresented; you must not
-	 claim that you wrote the original software. If you use this software
-	 in a product, an acknowledgement in the product documentation would be
-	 appreciated but is not required.
-	2. Altered source versions must be clearly marked as such, and must not be
-	 misrepresented as being the original software.
-	3. This notice may not be removed or altered from any source distribution.
+> ### The Irrlicht Engine License
+>
+> Copyright (C) 2002-2012 Nikolaus Gebhardt
+>
+> This software is provided 'as-is', without any express or implied
+> warranty.  In no event will the authors be held liable for any damages
+> arising from the use of this software.
+>
+> Permission is granted to anyone to use this software for any purpose,
+> including commercial applications, and to alter it and redistribute it
+> freely, subject to the following restrictions:
+>
+> 1. The origin of this software must not be misrepresented; you must not
+>    claim that you wrote the original software. If you use this software
+>    in a product, an acknowledgement in the product documentation would be
+>    appreciated but is not required.
+> 2. Altered source versions must be clearly marked as such, and must not be
+>    misrepresented as being the original software.
+> 3. This notice may not be removed or altered from any source distribution.
